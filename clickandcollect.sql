@@ -81,7 +81,7 @@ INSERT INTO `customers` (`c_id`, `name`, `email`, `address`, `dob`, `gender`, `m
 CREATE TABLE Brand(
     b_id int AUTO_INCREMENT PRIMARY KEY,
     name varchar(100)    
-);
+)engine = INNODB;
 
 
 
@@ -103,7 +103,7 @@ INSERT INTO `brand` ( `name`) VALUES ( 'Apple'),
 CREATE TABLE Catagory(
     cat_id int AUTO_INCREMENT PRIMARY KEY,
     name varchar(100)    
-);
+)engine = INNODB;
 
 
 
