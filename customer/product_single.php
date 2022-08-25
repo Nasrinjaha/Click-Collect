@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html>
+<?php 
+   include 'customerauth.php';
+   include 'connection.php';
+   $id = $_REQUEST['id'];
+?>
+
+<!DOCTYPE php>
+<php>
 <head>
     <title>Ecommerce Dynamic Web Template</title>
     <meta charset="UTF-8">
@@ -40,8 +46,8 @@
 
     <div class="container">
         <ol class="breadcrumb breadcrumb1">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="products.php">Products</a></li>
             <li class="active">Digital Camera</li>
         </ol>
 
@@ -50,15 +56,17 @@
                 <div class="col-md-6 single-top-left">  
                     <div class="flexslider">
                         <ul class="slides">
+                            <?php 
+
+                                $query = "delete from images where p_id = $id ";
+                                mysqli_query($con,$query);
+                                while($row = mysqli_fetch_array($table)){                   
+                            ?>
                             <li data-thumb="images/products/product_1_front.jpg">
-                                <div class="thumb-image detail_images"> <img src="images/products/product_1_front.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                                <div class="thumb-image detail_images"> <img src="../images/<?php echo $row['image']; ?>" data-imagezoom="true" class="img-responsive" alt=""> </div>
                             </li>
-                            <li data-thumb="images/products/product_1_side.jpg">
-                                <div class="thumb-image"> <img src="images/products/product_1_side.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-                            </li>
-                            <li data-thumb="images/products/product_1_work.jpg">
-                                <div class="thumb-image"> <img src="images/products/product_1_work.jpg" data-imagezoom="true" class="img-responsive" alt="" />  </div>
-                            </li> 
+
+                           <?php }?>
                         </ul>
                     </div>
                 </div>
@@ -186,80 +194,80 @@
             </div>
             <div class="clear"></div>
             <div class="featured-items">
-                <!-- Set up your HTML -->
+                <!-- Set up your php -->
                 <div class="owl-carousel">
 
                     <div class="item featured1">
                         <div class="item-full animated featured1-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product3.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->            
 
                     <div class="item featured2">
                         <div class="item-full animated featured2-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product1.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured3">
                         <div class="item-full animated featured3-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product2.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured4">
                         <div class="item-full animated featured4-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product3.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured5">
                         <div class="item-full animated featured5-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product4.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->
@@ -305,4 +313,4 @@
 <script type="text/javascript" src="js/webslidemenu.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
-</html>
+</php>

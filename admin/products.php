@@ -1,4 +1,4 @@
-<?php include 'adminauth.php' ?>
+<?php include 'adminauth.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -245,420 +245,45 @@
                         <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>
                         <div class="products">
                             <div class="row">
+                                 <?php 
+                                 include 'connection.php';
+                                 $query = "select * FROM products";
+                                 $result = mysqli_query($con,$query);
+                                 $i= 1;
+                                 while($row = mysqli_fetch_array($result)){
+                                    $id = $row['p_id'];
+                                 ?>
+                                      <div class="col-md-3">
+                                        <div class="product-item">
+                                            <div class="product-borde-inner">
+                                                <a href="product_single.html">
+                                                <?php $query1 = "SELECT * FROM images where p_id = $id";
+                                                 $result1 = mysqli_query($con,$query1); 
+                                                 $row1 = mysqli_fetch_array($result1)  ?>
+                                                    <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
+                                                </a> 
+                                                <div class="product-price">
+                                                    <a href="product_single.html"><?php echo $row['name'];?></a><br />
+                                                    <span class="prev-price">
+                                                        <del>200$</del>
+                                                    </span>
+                                                    <span class="current-price">
+                                                          <?php echo $row['price'];?>
+                                                    </span>
+                                                </div>
 
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product1.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
+                                                <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
+                                                    <i class="fa fa-cart-plus"></i>
+                                                    Add to cart
+                                                </a>
+                                                <div class="clear"></div>
                                             </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                
-
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-
-
-
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product3.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->  
-
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product4.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->                 
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product1.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->                 
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product4.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->                 
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product2.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] -->                 
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <div class="product-borde-inner">
-                                            <a href="product_single.html">
-                                                <img src="images/product-slide/product3.png" class="img img-responsive"/>
-                                            </a> 
-
-                                            <div class="product-price">
-                                                <a href="product_single.html">DSLR Camera</a><br />
-                                                <span class="prev-price">
-                                                    <del>200$</del>
-                                                </span>
-                                                <span class="current-price">
-                                                    150$
-                                                </span>
-                                            </div>
-
-                                            <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                <i class="fa fa-cart-plus"></i>
-                                                Add to cart
-                                            </a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div> 
-                                </div><!-- End Latest products[single] --> 
-
-                                <div class="clear"></div>
-
-
-
-
-
+                                        </div> 
+                                    </div>
+                                     <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
+                                 
+                                 <?php $i++; } ?>
+                               <!-- End Latest products[single] -->  
                             </div> <!-- End Latest products row-->
                             <a class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"> 
                                 <span>See More products.. </span>

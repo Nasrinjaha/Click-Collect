@@ -138,7 +138,7 @@
                             <div class="form-group row">
                                 <label for="image" class="col-sm-2 form-control-label">Image :</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="file" id="image" name="image"  required />
+                                    <input class="form-control" type="file" id="image" name="files[]" multiple  required />
                                 </div>
                             </div>
 
@@ -158,31 +158,48 @@
                                     $quantity =  $_POST['quantity']; 
                                     $price = $_POST['price'];
                                     $size = $_POST['size'];
-                                    $img = $_FILES['image']['name']; 
-                                    if($img){
+
+
+                                    $query2 = "INSERT INTO products(name,b_id,sub_id,size,description,price,quantity,status)
+                                    VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity',0)";
+                                    if(mysqli_query($con,$query2)){
+                                            echo '<span style= "color:green;">Successfully inserted';
+                                    }
+                                    else{
+                                        echo '<span style= "color:red;">insertion failed';
+                                    }
+
+
+                                    
+                                    $directory = 'images';
+                                    $i=1;
+                                    $pid=0;
+                                    $query = "SELECT *  FROM Products where 1";
+                                    $table = mysqli_query($con,$query);
+                                    while( $row = mysqli_fetch_array($table)){
+                                        $pid = $row['p_id'];
+                                    }
+                                    foreach($_FILES['files']['tmp_name'] as $key => $value){
+                                        $tmpname = $_FILES['files']['tmp_name'][$key];
+                                        $img = $_FILES['files']['name'][$key];
                                         $separetedimage = explode(".",$img);
                                         $ext = $separetedimage[1];
                                         $date = date("D:M:Y");
                                         $time = date("h:i:s");
-                                        $image = md5($date.$time);//MD5 function for encryption
+                                        $image = md5($date.$time.$i);//MD5 function for encryption
                                         $image = $image.".".$ext;
-                                        
-                                    }
-                                    else{
-                                        $image="NULL";
-                                    }
-                                    echo '<br>';
-                                    
-                                    $query1 = "INSERT INTO products(name,b_id,sub_id,size,description,price,quantity,img,status)
-                                    VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity',' $image',0)";
-                                    if(mysqli_query($con,$query1)){
-                                            echo '<span style= "color:green;">Successfully inserted';
-                                            if($image!=NULL){
-                                                move_uploaded_file($_FILES['image']['tmp_name'],"../images/$image");
-                                            }
-                                    }
-                                    else{
-                                        echo '<span style= "color:red;">insertion failed';
+                                        $i++;
+                                        $query1 = "INSERT INTO images(p_id,image)
+                                        VALUES('$pid','$image')";
+                                        if(mysqli_query($con,$query1)){
+                                                echo '<span style= "color:green;">Successfully inserted';
+                                                if($image!=NULL){
+                                                    move_uploaded_file($_FILES['files']['tmp_name'][$key],"../images/$image");
+                                                }
+                                        }
+                                        else{
+                                            echo '<span style= "color:red;">insertion failed';
+                                        }
                                     }
                                 }
                             ?>
