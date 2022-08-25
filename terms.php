@@ -1,294 +1,133 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ecommerce Dynamic Web Template</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="Dynamic responsive Ecommerce free web template" />
-    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template" />
-    <meta name="author" content="Maniruzzaman Akash">
-
-    <!-- CSS links -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-
-    
-    <!-- Animate.css -->
-    <link type="text/css" rel="stylesheet" href="css/animate.css" />
-
-    <!-- Owl Carousel CSS-->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.min.css" />
-
-
-
-    <!-- Mega navigation bar -->
-    <link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-
-    <!-- Main css link -->
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
-    
-</head>
-<body>
-   <?php include 'navbar.php' ?>
 <div class="content-area prodcuts">
 
-    <div class="row">
-        <div class="container">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                <div class="sidebar-products-main">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li class="active">Digital Camera</li>
+        </ol>
 
-                    <div class="sidebar-single">
-                        <div class="sidebar-title">
-                            <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#brandCollapse" aria-controls="#brandCollapse">
-                                <span class="pull-left title-sidebar">Filter By Brand</span>
-
-                                <span class="pull-right"><i class="fa fa-plus"></i></span>
-                                <span class="pull-right"><i class="fa fa-minus"></i></span>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div> <!--End Sidebar title div-->
-
-                        <div id="brandCollapse" class="collapse in">
-                            <form action="products_submit.php" method="get" accept-charset="utf-8">
-                                <input type="search" name="brand_name" class="form-control" value="" placeholder="Type Brand Name" />
-
-                                <input type="checkbox" id="c1" name="prodcut_id[]" />
-                                <label for="c1"><span></span>T-Shirt</label><br />
-
-                                <input type="checkbox" id="c2" name="prodcut_id[]" />
-                                <label for="c2"><span></span>Pant</label><br />
-
-                                <input type="checkbox" id="c3" name="prodcut_id[]" />
-                                <label for="c3"><span></span>Genji</label><br />
-
-                                <input type="checkbox" id="c4" name="prodcut_id[]" />
-                                <label for="c4"><span></span>Full Shirt</label><br />
-
-                                <input type="checkbox" id="c5" name="prodcut_id[]" />
-                                <label for="c5"><span></span>Half Shirt</label><br />
-
-                                <input type="submit" name="submit_brand_search" class="btn btn-red pull-right btn-sm" value="Search">
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div> <!--End Single Sidebar-->
-
-                    <div class="sidebar-single">
-                        <div class="sidebar-title">
-                            <a data-toggle="collapse" class="pointer" aria-expanded="true" data-target="#brandPriceCollapse" aria-controls="#brandPriceCollapse">
-                                <span class="pull-left title-sidebar">Filter By Price</span>
-
-                                <span class="pull-right"><i class="fa fa-plus"></i></span>
-                                <span class="pull-right"><i class="fa fa-minus"></i></span>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div> <!--End Sidebar title div-->
-
-                        <div id="brandPriceCollapse" class="collapse in">
-
-                            <form action="products_submit.php" method="get" accept-charset="utf-8">
-
-                                <input type="checkbox" id="price1" name="prodcut_price[]" />
-                                <label for="price1"><span></span>0-100TK</label><br />
-
-                                <input type="checkbox" id="price2" name="prodcut_price[]" />
-                                <label for="price2"><span></span>100-500TK</label><br />
-
-                                <input type="checkbox" id="price3" name="prodcut_price[]" />
-                                <label for="price3"><span></span>500-1000TK</label><br />
-
-                                <input type="checkbox" id="price4" name="prodcut_price[]" />
-                                <label for="price4"><span></span>1000-2000TK</label><br />
-
-                                <input type="checkbox" id="price5" name="prodcut_price[]" />
-                                <label for="price5"><span></span>2000-500TK</label><br />
-
-                                <input type="checkbox" id="price6" name="prodcut_price[]" />
-                                <label for="price6"><span></span>5000-1000TK</label><br />
-
-                                <input type="checkbox" id="price7" name="prodcut_price[]" />
-                                <label for="price7"><span></span>10000-20000TK</label><br />
-
-                                <input type="checkbox" id="price9" name="prodcut_price[]" />
-                                <label for="price9"><span></span>20000-100000TK</label><br />
-
-                                <input type="checkbox" id="price10" name="prodcut_price[]" />
-                                <label for="price10"><span></span>100000- + TK</label><br />
-
-                                <input type="submit" name="submit_brand_search" class="btn btn-red pull-right btn-sm" value="Search">
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div> <!--End Single Sidebar-->
-
-                    <div class="sidebar-single">
-                        <div class="sidebar-title">
-                            <a data-toggle="collapse" class="pointer" aria-expanded="true" data-target="#productColorCollapse" aria-controls="#productColorCollapse">
-                                <span class="pull-left title-sidebar">Filter By Color</span>
-
-                                <span class="pull-right"><i class="fa fa-plus"></i></span>
-                                <span class="pull-right"><i class="fa fa-minus"></i></span>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div> <!--End Sidebar title div-->
-
-                        <div id="productColorCollapse" class="collapse in">
-
-                            <form action="products_submit.php" method="get" accept-charset="utf-8">
-
-                                <input type="checkbox" id="color0" name="prodcut_color[]" />
-                                <label for="color0" style="color:#9c9"><span></span>White</label><br />
-
-                                <input type="checkbox" id="color1" name="prodcut_color[]" />
-                                <label for="color1" style="color:#f00"><span></span>Red</label><br />
-
-                                <input type="checkbox" id="color2" name="prodcut_color[]" />
-                                <label for="color2" style="color:#00f"><span></span>Blue</label><br />
-
-                                <input type="checkbox" id="color3" name="prodcut_color[]" />
-                                <label for="color3" style="color:#008000"><span></span>Green</label><br />
-
-                                <input type="checkbox" id="color4" name="prodcut_color[]" />
-                                <label for="color4" style="color:#ffc0cb"><span></span>Pink</label><br />
-
-                                <input type="checkbox" id="color5" name="prodcut_color[]" />
-                                <label for="color5" style="color:#ffd700"><span></span>Gold</label><br />
-
-                                <input type="checkbox" id="color6" name="prodcut_color[]" />
-                                <label for="color6" style="color:#ffa500"><span></span>Orange</label><br />
-
-                                <input type="checkbox" id="color7" name="prodcut_color[]" />
-                                <label for="color7" style="color:#ffa500"><span></span>Other</label><br />
-                                <input type="name" id="color7" class="form-control" placeholder="Color name" name="prodcut_color[]" /><br />
-
-
-                                <input type="submit" name="submit_brand_search" class="btn btn-red pull-right btn-sm" value="Search">
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div> <!--End Single Sidebar-->
-
-                    <div class="sidebar-single">
-                        <div class="sidebar-title">
-                            <a data-toggle="collapse" class="pointer" aria-expanded="true" data-target="#productReviewCollapse" aria-controls="#productReviewCollapse">
-                                <span class="pull-left title-sidebar">Filter By Review</span>
-
-                                <span class="pull-right"><i class="fa fa-plus"></i></span>
-                                <span class="pull-right"><i class="fa fa-minus"></i></span>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div> <!--End Sidebar title div-->
-
-                        <div id="productReviewCollapse" class="collapse in">
-
-                            <form action="products_submit.php" method="get" accept-charset="utf-8">
-
-                                <input type="checkbox" id="review1" name="prodcut_review[]" />
-                                <label for="review1" style="color:#008000"><span></span>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </label><br />
-                                <input type="checkbox" id="review2" name="prodcut_review[]" />
-                                <label for="review2" style="color:#6f6"><span></span>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </label><br />
-                                <input type="checkbox" id="review3" name="prodcut_review[]" />
-                                <label for="review3" style="color:#9c9"><span></span>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </label><br />
-                                <input type="checkbox" id="review4" name="prodcut_review[]" />
-                                <label for="review4" style="color:#f99"><span></span>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </label><br />
-                                <input type="checkbox" id="review5" name="prodcut_review[]" />
-                                <label for="review5" style="color:#fc9"><span></span>
-                                    <i class="fa fa-star"></i>
-                                </label><br />
-
-
-                                <input type="submit" name="submit_brand_search" class="btn btn-red pull-right btn-sm" value="Search">
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div> <!--End Single Sidebar-->
+        <div class="single-product">
+            <div class="row" id="">
+                <div class="col-md-6 single-top-left">  
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="images/products/product_1_front.jpg">
+                                <div class="thumb-image detail_images"> <img src="images/products/product_1_front.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                            </li>
+                            <li data-thumb="images/products/product_1_side.jpg">
+                                <div class="thumb-image"> <img src="images/products/product_1_side.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                            </li>
+                            <li data-thumb="images/products/product_1_work.jpg">
+                                <div class="thumb-image"> <img src="images/products/product_1_work.jpg" data-imagezoom="true" class="img-responsive" alt="" />  </div>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 single-top-right">
+                    <h3 class="item_name">Electric Snow Blower</h3>
+                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
+                    <div class="single-rating">
+                        <ul>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li class="rating">20 reviews</li>
+                            <li><a href="#">Add your review</a></li>
+                        </ul> 
+                    </div>
+                    <div class="single-price">
+                        <ul>
+                            <li class="product-price">$540</li>  
+                            <li><del>$600</del></li> 
+                            <li><span class="off">10% OFF</span></li> 
+                            <li>Ends on: June,5th</li>
+                            <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
+                        </ul>   
+                    </div> 
+                    <p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
+                    <form action="#" method="post">
+                        <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="add" value="1" /> 
+                        <input type="hidden" name="w3ls_item" value="Snow Blower" /> 
+                        <input type="hidden" name="amount" value="540.00" /> 
+                        <button type="submit" class="btn btn-red" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                        <button class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+                    </form>
                     
-
-
                 </div>
+                <div class="clearfix"> </div>  
             </div>
-            <div class="col-sm-10 col-md-10 col-lg-10">
-                <ol class="breadcrumb breadcrumb1">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Products</li>
-                </ol>
-                <div class="product-top">
-                    <h4>All Products</h4>
-                    <ul> 
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Most Popular</a></li> 
-                                <li><a href="#">New In</a></li> 
-                                <li><a href="#">Lowest price</a></li> 
-                                <li><a href="#">Highest price</a></li>
-                                <li><a href="#">Best Rating</a></li>
-                            </ul> 
-                        </li>
-                    </ul> 
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="all-products">
-                    <div class="">
-                        <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>
-                        <div class="products">
-                            <div class="row">
-                                 <?php 
-                                 include 'connection.php';
-                                 $query = "select * FROM products";
-                                 $result = mysqli_query($con,$query);
-                                 $i= 1;
-                                 while($row = mysqli_fetch_array($result)){
-                                 ?>
-                                      <div class="col-md-3">
-                                        <div class="product-item">
-                                            <div class="product-borde-inner">
-                                                <a href="product_single.html">
-                                                    <img src="images/product-slide/product<?php echo $i; ?>" class="img img-responsive"/>
-                                                </a> 
-                                                <div class="product-price">
-                                                    <a href="product_single.html"><?php echo $row['name'];?></a><br />
-                                                    <span class="prev-price">
-                                                        <del>200$</del>
-                                                    </span>
-                                                    <span class="current-price">
-                                                          <?php echo $row['price'];?>
-                                                    </span>
-                                                </div>
+            <div class="single-page-icons social-icons"> 
+                <ul>
+                    <li><h4>Share on</h4></li>
+                    <li><a href="#" class="fa fa-facebook-square icon facebook"> </a></li>
+                    <li><a href="#" class="fa fa-twitter-square icon twitter"> </a></li>
+                    <li><a href="#" class="fa fa-google-plus-square icon googleplus"> </a></li>
+                    <li><a href="#" class="fa fa-rss-square icon rss"> </a></li> 
+                </ul>
+            </div>
 
-                                                <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
-                                                    <i class="fa fa-cart-plus"></i>
-                                                    Add to cart
-                                                </a>
-                                                <div class="clear"></div>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                     <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
-                                 
-                                 <?php $i++; } ?>
-                               <!-- End Latest products[single] -->  
-                            </div> <!-- End Latest products row-->
-                            <a class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"> 
-                                <span>See More products.. </span>
-                            </a>
-                            <div class="clear"></div>
-                        </div> <!-- End products div-->
-                    </div> <!-- End container latest products-->
-                </div>  <!-- End Latest products -->
-            </div>
-        </div>
+            <div class="single-product-everything">
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productDescriptionCollapse" aria-controls="#productDescriptionCollapse">
+                        <span class="pull-left title-sidebar"><i class="fa fa-info-circle"></i> Product Description</span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productDescriptionCollapse" class="collapse in collapseDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div> <!-- End single product extra div -->
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productReviewCollapse" aria-controls="#productReviewCollapse">
+                        <span class="pull-left title-sidebar"> <i class="fa fa-check-square-o"></i>
+                            Product Reviews <span class="badge">2</span>
+                        </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productReviewCollapse" class="collapse collapseDiv">
+                        <div class="review">
+                            <h4>Polash Rana :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                        <div class="review">
+                        <h4>Nur Ahmed :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                    </div>
+                </div> <!-- End single product extra div -->
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productHelpCollapse" aria-controls="#productHelpCollapse">
+                        <span class="pull-left title-sidebar"> <i class="fa fa-question-circle"></i> Help </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productHelpCollapse" class="collapse collapseDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div> <!-- End single product extra div -->
+                
+
+            </div> <!--End Sidebar title div-->
+
+
+
+
+        </div>  <!--End Single Product Div Everything-->
+
 
     </div>
 
@@ -394,6 +233,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <div class="services-area">
         <div class="services">
             <div class="container">
@@ -435,8 +278,3 @@
     </div> <!-- End Service -->
 
 </div> <!-- End content Area class -->
-
-<?php include 'footer.php' ?>
-
-</body>
-</html>
