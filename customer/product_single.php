@@ -4,10 +4,10 @@
    $id = $_REQUEST['id'];
 ?>
 
-<!DOCTYPE php>
-<php>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Ecommerce Dynamic Web Template</title>
+    <title>Admin Access</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -57,12 +57,14 @@
                     <div class="flexslider">
                         <ul class="slides">
                             <?php 
-
-                                $query = "delete from images where p_id = $id ";
-                                mysqli_query($con,$query);
+                                $query1 = "select * from products where p_id = $id ";
+                                $table1=mysqli_query($con,$query1);
+                                $row1 = mysqli_fetch_array($table1);
+                                $query = "select * from images where p_id = $id ";
+                                $table=mysqli_query($con,$query);
                                 while($row = mysqli_fetch_array($table)){                   
                             ?>
-                            <li data-thumb="images/products/product_1_front.jpg">
+                            <li data-thumb="../images/<?php echo $row['image'];  ?>">
                                 <div class="thumb-image detail_images"> <img src="../images/<?php echo $row['image']; ?>" data-imagezoom="true" class="img-responsive" alt=""> </div>
                             </li>
 
@@ -71,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 single-top-right">
-                    <h3 class="item_name">Electric Snow Blower</h3>
+                    <h3 class="item_name"><?php echo $row1['name'];?></h3>
                     <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
                     <div class="single-rating">
                         <ul>
@@ -86,14 +88,14 @@
                     </div>
                     <div class="single-price">
                         <ul>
-                            <li class="product-price">$540</li>  
+                            <li class="product-price"><?php echo $row1['price'];?></li>  
                             <li><del>$600</del></li> 
                             <li><span class="off">10% OFF</span></li> 
                             <li>Ends on: June,5th</li>
                             <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
                         </ul>   
                     </div> 
-                    <p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
+                    <p class="single-price-text"><?php echo $row1['description'];?> </p>
                     <form action="#" method="post">
                         <input type="hidden" name="cmd" value="_cart" />
                         <input type="hidden" name="add" value="1" /> 
@@ -127,7 +129,7 @@
                         <div class="clearfix"></div>
                     </a>
                     <div id="productDescriptionCollapse" class="collapse in collapseDiv">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p><?php echo $row1['description'];?></p>
                     </div>
                 </div> <!-- End single product extra div -->
 
@@ -313,4 +315,4 @@
 <script type="text/javascript" src="js/webslidemenu.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
-</php>
+</html>

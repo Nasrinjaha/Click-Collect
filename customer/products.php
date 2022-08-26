@@ -1,8 +1,8 @@
 <?php include 'customerauth.php'; ?>
-<!DOCTYPE php>
-<php>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Ecommerce Dynamic Web Template</title>
+    <title>Customer Access</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -33,7 +33,7 @@
     
 </head>
 <body>
-   <?php include 'navbar.php' ?>
+<?php include 'navbar.php' ?>
 <div class="content-area prodcuts">
 
     <div class="row">
@@ -256,14 +256,14 @@
                                       <div class="col-md-3">
                                         <div class="product-item">
                                             <div class="product-borde-inner">
-                                                <a href="product_single.php?id=<?php $id;?>">
+                                                <a href="product_single.php?id=<?php echo $id;?>">
                                                 <?php $query1 = "SELECT * FROM images where p_id = $id";
                                                  $result1 = mysqli_query($con,$query1); 
                                                  $row1 = mysqli_fetch_array($result1)  ?>
                                                     <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
                                                 </a> 
                                                 <div class="product-price">
-                                                    <a href="product_single.php?id=<?php $id;?>"><?php echo $row['name'];?></a><br />
+                                                    <a href="product_single.php?id=<?php echo $id;?>"><?php echo $row['name'];?></a><br />
                                                     <span class="prev-price">
                                                         <del>200$</del>
                                                     </span>
@@ -280,7 +280,7 @@
                                             </div>
                                         </div> 
                                     </div>
-                                     <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
+                                    <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
                                  
                                  <?php $i++; } ?>
                                <!-- End Latest products[single] -->  
@@ -444,4 +444,4 @@
 <?php include 'footer.php' ?>
 
 </body>
-</php>
+</html>

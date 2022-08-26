@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ecommerce Dynamic Web Template</title>
+    <title>Admin Access</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -33,7 +33,7 @@
     
 </head>
 <body>
-   <?php include 'navbar.php' ?>
+<?php include 'navbar.php' ?>
 <div class="content-area prodcuts">
 
     <div class="row">
@@ -221,7 +221,7 @@
             </div>
             <div class="col-sm-10 col-md-10 col-lg-10">
                 <ol class="breadcrumb breadcrumb1">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="active">Products</li>
                 </ol>
                 <div class="product-top">
@@ -256,14 +256,14 @@
                                       <div class="col-md-3">
                                         <div class="product-item">
                                             <div class="product-borde-inner">
-                                                <a href="product_single.html">
+                                                <a href="product_single.php?id=<?php echo $id;?>">
                                                 <?php $query1 = "SELECT * FROM images where p_id = $id";
                                                  $result1 = mysqli_query($con,$query1); 
                                                  $row1 = mysqli_fetch_array($result1)  ?>
                                                     <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
                                                 </a> 
                                                 <div class="product-price">
-                                                    <a href="product_single.html"><?php echo $row['name'];?></a><br />
+                                                    <a href="product_single.php?id=<?php echo $id;?>"><?php echo $row['name'];?></a><br />
                                                     <span class="prev-price">
                                                         <del>200$</del>
                                                     </span>
@@ -272,7 +272,7 @@
                                                     </span>
                                                 </div>
 
-                                                <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
+                                                <a href="cart.php"  class="btn btn-cart text-center add-to-cart pull-right">
                                                     <i class="fa fa-cart-plus"></i>
                                                     Add to cart
                                                 </a>
@@ -280,7 +280,7 @@
                                             </div>
                                         </div> 
                                     </div>
-                                     <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
+                                    <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
                                  
                                  <?php $i++; } ?>
                                <!-- End Latest products[single] -->  
@@ -314,80 +314,80 @@
             </div>
             <div class="clear"></div>
             <div class="featured-items">
-                <!-- Set up your HTML -->
+                <!-- Set up your php -->
                 <div class="owl-carousel">
 
                     <div class="item featured1">
                         <div class="item-full animated featured1-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product3.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->            
 
                     <div class="item featured2">
                         <div class="item-full animated featured2-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product1.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured3">
                         <div class="item-full animated featured3-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product2.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured4">
                         <div class="item-full animated featured4-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product3.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->                
 
                     <div class="item featured5">
                         <div class="item-full animated featured5-inner  width0">
-                            <a href="products.html"><h4>Digital Camera</h4></a>
+                            <a href="products.php"><h4>Digital Camera</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             <h5>200$</h5>
-                            <a href="products.html" class="btn btn-cart">
+                            <a href="products.php" class="btn btn-cart">
                                 Add To Cart
                             </a>
 
                         </div>
-                        <a href="products.html">
+                        <a href="products.php">
                             <img src="images/product-slide/product4.png" class="img img-responsive" alt="Product1">
                         </a>
                     </div> <!-- Single Featured Item -->
@@ -444,4 +444,4 @@
 <?php include 'footer.php' ?>
 
 </body>
-</html>
+  </html>

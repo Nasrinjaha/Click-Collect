@@ -1,8 +1,19 @@
-<?php include 'customerauth.php' ?>
+<?php include 'customerauth.php' ;
+    include 'connection.php';
+    $id=$_SESSION['id'];
+    $name = $_SESSION['name'];
+    $email = $_SESSION['email'];
+    $query= "select * from customers where c_id=$id";
+    $table = mysqli_query($con,$query);
+    $row = mysqli_fetch_array($table);
+    $mobile =$row["mobile"];
+    $address = $row["address"];
+    $gender=$row["gender"];
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Account Page | Ecommerce Dynamic Web Template</title>
+    <title>Customer Access </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -49,16 +60,17 @@
             </div>
             <div class="col-sm-9">
                 <h2>Account Control Panel</h2>
-                <strong>Hello Maniruzzaman Akash</strong><br />
+                <strong>Hello<?php echo "    ";
+                            echo $name;?></strong><br />
                 <p>From your account control panel, you can access all of your recent activites, orders, save products and you can edit your personal information and other details.</p>
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="well">
                             <h3>Contact Information</h3>
-                            <p>Name : Nasrin Jahan Ripa</p>
-                            <p>Email : ripanasrin62@gmail.com</p>
-                            <p><a href="account_change_email.html">Change Email</a> | <a href="account_change_password.html">Change Password</a></p>
-                            <p class="pull-right"><a href="#"><i class="fa fa-edit"></i> Edit</a></p>
+                            <p>Name : <?php echo $name?></p>
+                            <p>Email : <?php echo $email?></p>
+                            <p><a href="account_change_email.php">Change Email</a> | <a href="account_change_password.php">Change Password</a></p>
+                            <p class="pull-right"><a href="account_information.php"><i class="fa fa-edit"></i> Edit</a></p>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -67,7 +79,7 @@
                         <div class="well">
                             <h3>News Letters</h3>
                             <p>Do you want to get the latest product news and promotion offers then make it on otherwise off it.</p>
-                            <p class="pull-right"><a href="#"><i class="fa fa-edit"></i> Edit</a></p>
+                            <p class="pull-right"><a href="account_newsletter.php"><i class="fa fa-edit"></i> Edit</a></p>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -76,9 +88,9 @@
                         <div class="well">
                             <h3>Default Billing Address</h3>
                             <address class="address">
-                                <strong>Name:</strong> Nasrin Jahan Ripa <br />
-                                <strong>Email:</strong> ripanasrin62@gmail.com <br />
-                                <strong>Contact No:</strong> +8801951233084<br />
+                                <strong>Name:</strong>  <?php echo $name?> <br />
+                                <strong>Email:</strong>  <?php echo $email?> <br />
+                                <strong>Contact No:</strong>  <?php echo $mobile?><br />
                             </address>
                             <p class="pull-right"><a href="#"><i class="fa fa-edit"></i> Edit</a></p>
                             <div class="clearfix"></div>
@@ -89,9 +101,9 @@
                         <div class="well">
                         <h3>Default Delivery Address Address</h3>
                             <address class="address">
-                                <strong>Name:</strong> Nasrin Jahan Ripa <br />
-                                <strong>Email:</strong> ripanasrin62@gmail.com <br />
-                                <strong>Contact No:</strong> +8801951233084<br />
+                                <strong>Name:</strong>  <?php echo $name?> <br />
+                                <strong>Email:</strong>  <?php echo $email?> <br />
+                                <strong>Contact No:</strong>  <?php echo $mobile?><br />
                             </address>
                             <p class="pull-right"><a href="#"><i class="fa fa-edit"></i> Edit</a></p>
                             <div class="clearfix"></div>
