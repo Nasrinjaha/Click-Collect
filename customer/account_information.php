@@ -1,8 +1,22 @@
-<?php include 'customerauth.php' ?>
-<!DOCTYPE php>
-<php>
+<?php 
+    include 'customerauth.php';
+    include 'connection.php';
+    $id =  $_SESSION['id'];
+    $query = "select * from customers where c_id = $id";
+    $result = mysqli_query($con,$query);
+    $row = mysqli_fetch_array($result);
+    $name = $row['name'];
+    $contact = $row['mobile'];
+    $email = $row['email'];
+    $address = $row['address'];
+    $dob = $row['dob'];
+    $gender = $row['gender'];      
+    $pass = $row['pass'];
+ ?>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Account Page | Ecommerce Dynamic Web Template</title>
+    <title>Customer Access</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -52,60 +66,72 @@
                         <form method="post" class="cmxform" action="" id="signUpForm">
 
                             <div class="form-group row">
-                                <label for="firstname" class="col-sm-2 form-control-label">First Name:</label>
+                                <label for="name" class="col-sm-2 form-control-label"> Name:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="firstname" class="form-control" id="firstname" value="Maniruzzaman" name="name" minlength="2" required>
+                                    <input type="text" name="name" class="form-control" id="name"  name="name"  value = '<?php echo $name?>'  minlength="2" >
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="lastname" class="col-sm-2 form-control-label">Last Name:</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="lastname" class="form-control" id="lastname" value="Akash">
-                                </div>
-                            </div>
-
+                    
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 form-control-label">Email:</label>
                                 <div class="col-sm-8">
-                                    <input type="email" name="email" class="form-control email" id="email" value="manirujjamanakash@gmail.com">
+                                    <input type="email" name="email" class="form-control email" id="email" value=<?php echo $email ?> >
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="username" class="col-sm-2 form-control-label">Username:</label>
+                                <label for="address" class="col-sm-2 form-control-label">Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="username" class="form-control" id="username" value="ManiruzzamanAkash">
+                                    <input type="text" name="address" class="form-control" id="address" value = '<?php echo $address ?>'>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-2 form-control-label">Current Email:</label>
+                                <label for="Address" class="col-sm-2 form-control-label">Gender :</label>
                                 <div class="col-sm-8">
-                                    <p class="form-control-static">manirujjamanakash@gmail.com</p>
+                                <input class="form-control" id="gender" name="gender" type="text" value = <?php echo $gender ?>  />
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="contact" class="col-sm-2 form-control-label">Contact</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="contact" class="form-control" id="contact" value = <?php echo  $contact ?> >
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-2 form-control-label">New Email:</label>
+                                <label for="dob" class="col-sm-2 form-control-label">BirthDate:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="email" class="form-control" id="email" value="ManiruzzamanAkash">
-                                </div>
-                            </div>
-
-                            
-
-                            <div class="form-group row">
-                                <label for="birthdate" class="col-sm-2 form-control-label">BirthDate:</label>
-                                <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="birthdate" id="birthdate"value="1995-12-30" required>
+                                    <input type="date" name="dob" class="form-control"  id="dob"  value = <?php echo $dob ?>  >
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-offset-2 col-sm-8">
-                                    <input type="submit" class="btn btn-yellow btn-lg" id="submitForm" value="Save" />
+                                    <input type="submit" class="btn btn-yellow btn-lg text-center" id="submitForm" name = "submit" value="update" />
                                 </div>
                             </div>
+
+                            <?php                
+                                if(isset($_POST['submit'])){
+                                $name =   $_POST['name'];
+                                $mail = $_POST['email'];
+                                $dob = $_POST['dob'];
+                                $address = $_POST['address'];
+                                $contact = $_POST['contact']; 
+                                $gender = $_POST['gender'];
+                                $query1 = "update customers set name = '$name',  email='$mail' ,address= '$address',dob= '$dob', gender='$gender',mobile='$contact' where c_id = $id";
+                                        if(mysqli_query($con,$query1)){
+                                            $var = 'account_information.php';
+                                            echo "<script>window.location.href='".$var."'</script>"; 
+                                            echo '<span style= "color:green;">Successfully updated';
+                                        }
+                                        else{
+                                            echo '<span style= "color:red;"> updated failed!!!';
+                                        }
+                                }
+                             ?>
+
                         </form>
                     </div>
                 </div> <!--End Row-->
@@ -118,4 +144,4 @@
 </div> <!-- End content Area class -->
 <?php include 'footer.php' ?>
 </body>
-</php>
+</html>
