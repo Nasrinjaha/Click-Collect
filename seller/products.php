@@ -247,7 +247,19 @@
                             <div class="row">
                                  <?php 
                                  include 'connection.php';
-                                 $query = "select * FROM products";
+                                 if(isset($_REQUEST['sub_id'])){
+                                    $sid = $_REQUEST['sub_id'];
+                                 echo $sid;
+                                $query = "select * FROM products where sub_id = $sid ";
+                                }
+                                else if(isset($_REQUEST['b_id'])){
+                                    $bid = $_REQUEST['b_id'];
+                                 echo $bid;
+                                $query = "select * FROM products where sub_id = $bid ";
+                                }
+                                else{
+                                    $query = "select * FROM products";
+                                }
                                  $result = mysqli_query($con,$query);
                                  $i= 1;
                                  while($row = mysqli_fetch_array($result)){
