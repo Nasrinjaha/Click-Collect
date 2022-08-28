@@ -46,7 +46,7 @@
                  <?php include 'sidebar.php' ?>
             </div>
             <div class="col-sm-9">
-                <h2>Add Subcategory</h2>
+                <h2>Add Brand</h2>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <form method="post" class="cmxform" action="" id="signUpForm">
