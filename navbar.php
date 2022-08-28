@@ -1,4 +1,4 @@
-   <div class="wrapper">
+<div class="wrapper">
         <!-- Header part  -->
         <div class="header" id="top">
             <!-- Start Top Header -->
@@ -17,9 +17,9 @@
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="cart.php">My Orders</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="account.php">Wallets</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="logout.php">Logout</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="cart.php">My Orders</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="account.php">Wallets</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="logout.php">Logout</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -45,7 +45,7 @@
             <div class="header-bottom">
                 <div class="container">
                     <div class="header-logo pull-left">
-                        <a href="index.php">
+                        <a href="products.php">
                             <img src="images/logo.png" alt="Your Shop Logo" class="img img-responsive">
                         </a>
                     </div>
@@ -156,7 +156,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                     <?php } ?>
                                   </ul>
@@ -168,7 +168,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                   <?php } ?>
                                 </ul>
@@ -180,7 +180,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                   <?php } ?>
                                 </ul>
@@ -227,7 +227,7 @@
                 $table = mysqli_query($con,$query);
                 while($row = mysqli_fetch_array($table)){                   
                ?>
-                <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php }  ?>
             </ul>
@@ -240,7 +240,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php } ?>
             </ul>
@@ -252,7 +252,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php } ?>
             </ul>
@@ -269,7 +269,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
       <?php } ?>
   </ul>
@@ -280,7 +280,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table)){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>
+            <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
       <?php } ?>
   </ul>
 </div>
@@ -482,7 +482,7 @@
                     $table = mysqli_query($con,$query);
                     while($row = mysqli_fetch_array($table) and $cnt<=6){ 
                     ?>
-                    <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                    <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
                        
                 <?php $cnt =$cnt+1;
                    $var = $row['p_id'];
@@ -500,7 +500,7 @@
                 $table = mysqli_query($con,$query);
                 while($row = mysqli_fetch_array($table) and $cnt<=6){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>     
+            <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>     
             <?php $cnt =$cnt+1;
                    $var = $row['p_id'];
             } ?>
@@ -517,7 +517,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+            <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
             <?php $cnt =$cnt+1;
                    $var = $row['p_id'];
              } ?>
@@ -534,7 +534,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
         <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
@@ -551,7 +551,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
         <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
@@ -568,7 +568,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
         <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
@@ -585,7 +585,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
         <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
@@ -603,7 +603,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
+        <li><a href="index.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
         <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>

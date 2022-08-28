@@ -1,8 +1,7 @@
-<?php include 'adminauth.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Access</title>
+    <title>Customer Access</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Language" content="en-US" />
@@ -33,7 +32,8 @@
     
 </head>
 <body>
-<?php include 'navbar.php' ?>
+<?php include 'navbar.php' ;
+?>
 <div class="content-area prodcuts">
 
     <div class="row">
@@ -245,26 +245,26 @@
                         <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>
                         <div class="products">
                             <div class="row">
-                                 <?php 
-                                 include 'connection.php';
-                                 if(isset($_REQUEST['sub_id'])){
-                                    $sid = $_REQUEST['sub_id'];
-                                    echo $sid;
-                                $query = "select * FROM products where sub_id = $sid ";
-                                }
-                                else if(isset($_REQUEST['b_id'])){
-                                    $bid = $_REQUEST['b_id'];
+                                <?php 
+                                    include 'connection.php';
+                                    if(isset($_REQUEST['sub_id'])){
+                                        $sid = $_REQUEST['sub_id'];
+                                     echo $sid;
+                                    $query = "select * FROM products where sub_id = $sid ";
+                                    }
+                                    else if(isset($_REQUEST['b_id'])){
+                                        $bid = $_REQUEST['b_id'];
                                      echo $bid;
-                                $query = "select * FROM products where sub_id = $bid ";
-                                }
-                                else{
-                                    $query = "select * FROM products";
-                                }
+                                    $query = "select * FROM products where sub_id = $bid ";
+                                    }
+                                    else{
+                                        $query = "select * FROM products";
+                                    }
                                  $result = mysqli_query($con,$query);
                                  $i= 1;
                                  while($row = mysqli_fetch_array($result)){
                                     $id = $row['p_id'];
-                                 ?>
+                                ?>
                                       <div class="col-md-3">
                                         <div class="product-item">
                                             <div class="product-borde-inner">
@@ -272,7 +272,7 @@
                                                 <?php $query1 = "SELECT * FROM images where p_id = $id";
                                                  $result1 = mysqli_query($con,$query1); 
                                                  $row1 = mysqli_fetch_array($result1)  ?>
-                                                    <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
+                                                    <img src="images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
                                                 </a> 
                                                 <div class="product-price">
                                                     <a href="product_single.php?id=<?php echo $id;?>"><?php echo $row['name'];?></a><br />
@@ -456,4 +456,4 @@
 <?php include 'footer.php' ?>
 
 </body>
-  </html>
+</html>

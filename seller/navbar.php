@@ -1,4 +1,4 @@
-   <div class="wrapper">
+<div class="wrapper">
         <!-- Header part  -->
         <div class="header" id="top">
             <!-- Start Top Header -->
@@ -17,9 +17,9 @@
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="cart.php">My Orders</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="account.php">Wallets</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="../logout.php">Logout</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="cart.php">My Orders</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="account.php">Wallets</a></li>
+                                        <li role="presentation"><a role="menuitem" tabproducts="-1" href="logout.php">Logout</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -45,7 +45,7 @@
             <div class="header-bottom">
                 <div class="container">
                     <div class="header-logo pull-left">
-                        <a href="index.php">
+                        <a href="products.php">
                             <img src="images/logo.png" alt="Your Shop Logo" class="img img-responsive">
                         </a>
                     </div>
@@ -156,7 +156,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                     <?php } ?>
                                   </ul>
@@ -168,7 +168,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                   <?php } ?>
                                 </ul>
@@ -180,7 +180,7 @@
                                         $table = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_array($table)){ 
                                         ?>
-                                        <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                                        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                                   <?php } ?>
                                 </ul>
@@ -227,7 +227,7 @@
                 $table = mysqli_query($con,$query);
                 while($row = mysqli_fetch_array($table)){                   
                ?>
-                <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php }  ?>
             </ul>
@@ -240,7 +240,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php } ?>
             </ul>
@@ -252,7 +252,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
                  <?php } ?>
             </ul>
@@ -269,7 +269,7 @@
                   $table = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($table)){ 
                   ?>
-                   <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                   <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
 
       <?php } ?>
   </ul>
@@ -280,7 +280,7 @@
             $table = mysqli_query($con,$query);
             while($row = mysqli_fetch_array($table)){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>
+            <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
       <?php } ?>
   </ul>
 </div>
@@ -477,13 +477,16 @@
               <ul class="wstliststy02">
                 <li class="wstheading">Apple Products </li>
                 <?php 
-                    $query = "select * from products where b_id = '1'";        
+                    $query = "select * from products where b_id = '1'";
+                    $cnt = 0;
                     $table = mysqli_query($con,$query);
-                    while($row = mysqli_fetch_array($table) ){ 
+                    while($row = mysqli_fetch_array($table) and $cnt<=6){ 
                     ?>
-                    <li><a href="#"><?php echo $row['name']; ?></a> </li>
+                    <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>
                        
-                <?php  } ?>
+                <?php $cnt =$cnt+1;
+                   $var = $row['p_id'];
+                } ?>
             </ul>
         </div>
     </li>
@@ -493,11 +496,13 @@
             <li class="wstheading">Nike Products </li>
             <?php 
                 $query = "select * from products where b_id = '2' ";
+                $cnt = 0;
                 $table = mysqli_query($con,$query);
-                while($row = mysqli_fetch_array($table) ){ 
+                while($row = mysqli_fetch_array($table) and $cnt<=6){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>     
-            <?php 
+            <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>     
+            <?php $cnt =$cnt+1;
+                   $var = $row['p_id'];
             } ?>
         </ul>
     </div>
@@ -508,11 +513,13 @@
         <li class="wstheading">Barbie Products </li>
         <?php 
             $query = "select * from products where b_id = '3' ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
             ?>
-            <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-            <?php 
+            <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+            <?php $cnt =$cnt+1;
+                   $var = $row['p_id'];
              } ?>
     </ul>
 </div>
@@ -523,11 +530,13 @@
         <li class="wstheading">Arong Products </li>
         <?php 
             $query = "select * from products where b_id = '6' ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-        <?php 
+        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+        <?php $cnt =$cnt+1;
+            $var = $row['p_id'];
         } ?>
     </ul>
 </div>
@@ -538,11 +547,12 @@
         <li class="wstheading">Yellow Products </li>
         <?php 
             $query = "select * from products where b_id = '7'  ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-        <?php 
+        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+        <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
     </ul>
@@ -554,11 +564,12 @@
         <li class="wstheading">Cats Eye Products </li>
         <?php 
             $query = "select * from products where b_id = '8' ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-        <?php 
+        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+        <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
     </ul>
@@ -570,11 +581,12 @@
         <li class="wstheading">Plus Point Products </li>
         <?php 
             $query = "select * from products where b_id = '9' ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-        <?php 
+        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+        <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
     </ul>
@@ -587,11 +599,12 @@
         <li class="wstheading">Get Pocket Products </li>
         <?php 
             $query = "select * from products where b_id = '5' ";
+            $cnt = 0;
             $table = mysqli_query($con,$query);
-            while($row = mysqli_fetch_array($table) ){ 
+            while($row = mysqli_fetch_array($table) and $cnt<=6){ 
         ?>
-        <li><a href="#"><?php echo $row['name']; ?></a> </li>       
-        <?php 
+        <li><a href="products.php?sub_id=<?php echo $row['sub_id']?>"><?php echo $row['name']; ?></a> </li>       
+        <?php $cnt =$cnt+1;
             $var = $row['p_id'];
         } ?>
     </ul>
@@ -615,7 +628,7 @@
 <li class="wsshopmyaccount clearfix"><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="wtxaccountlink"><i class="fa fa-align-justify"></i>My Account <i class="fa  fa-angle-down"></i></a>
     <ul class="wsmenu-submenu">
 
-  <li><a href="account.php"><i class="fa fa-user"></i>View Profile</a></li>
+    <li><a href="account.php"><i class="fa fa-user"></i>View Profile</a></li>
   <li><a href="account.html#wishlist"><i class="fa fa-heart"></i>My Wishlist</a></li>
   <li><a href="../logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
   <li><a href="products.php"><i class="fa fa-sign-out"></i>customers view</a></li>
