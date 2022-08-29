@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 17, 2022 at 01:58 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Generation Time: Aug 29, 2022 at 06:33 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `dob` date DEFAULT NULL,
   `address` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `mobile` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `pass` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `img` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`a_id`)
@@ -43,10 +45,10 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`a_id`, `name`, `email`, `dob`, `address`, `pass`, `img`) VALUES
-(1, 'Ripa', 'ripa@gmail.com', '2022-08-16', 'ctg', '12345', NULL),
-(2, 'Jumu', 'jumu@gmail.com', '2022-08-24', 'ctg', '12345', NULL),
-(3, 'admin3', 'admin3@gmail.com', '2022-08-08', 'ctg', '12345', NULL);
+INSERT INTO `admin` (`a_id`, `name`, `email`, `dob`, `address`, `gender`, `mobile`, `pass`, `img`) VALUES
+(1, 'Ripa', 'ripa@gmail.com', '2022-08-16', 'ctg', '', '', '12345', NULL),
+(2, 'Jumu', 'jumu@gmail.com', '2022-08-24', 'ctg', '', '', '12345', NULL),
+(3, 'admin3', 'admin3@gmail.com', '2022-08-08', 'ctg', 'female', '01835493825', '12345', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `b_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`b_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `brand`
@@ -73,7 +75,8 @@ INSERT INTO `brand` (`b_id`, `name`) VALUES
 (6, 'Arong'),
 (7, 'Yellow'),
 (8, 'cats Eye'),
-(9, 'Plus Point');
+(9, 'Plus Point'),
+(13, 'Addidas');
 
 -- --------------------------------------------------------
 
@@ -92,17 +95,6 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `FK_cart1` (`c_id`),
   KEY `FK_cart2` (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `c_id`, `p_id`, `add_date`, `quantity`) VALUES
-(6, 1, 1, '2022-08-22', 4),
-(7, 2, 1, '2022-08-22', 4),
-(8, 3, 2, '2022-08-22', 4),
-(9, 4, 3, '2022-08-22', 4),
-(10, 5, 4, '2022-08-29', 4);
 
 -- --------------------------------------------------------
 
@@ -158,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
 --
 
 INSERT INTO `customers` (`c_id`, `name`, `email`, `address`, `dob`, `gender`, `mobile`, `pass`, `status`, `img`) VALUES
-(1, 'Emo', 'emo@gmail.com', 'ctg', '2022-08-30', 'female', '01835493825', '12345', 1, NULL),
+(1, 'Emo000', 'emo@gmail.com', 'ctg', '2022-08-30', 'female', '01835493825', '12345', 1, NULL),
 (2, 'montaha', 'montaha@gmail.com', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
 (3, 'sabiha', 'montaha@gmail.com', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
 (4, 'customer1', 'customer1@gmail.com', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
@@ -211,7 +203,34 @@ CREATE TABLE IF NOT EXISTS `images` (
   `image` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`e_id`),
   KEY `FK_image` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`e_id`, `p_id`, `image`) VALUES
+(28, 30, '2db753d14a5c07f1ebe4152c0361d106.jpg'),
+(29, 30, 'c162086d40326ef80ae9971f64bfb9df.jpg'),
+(30, 31, '473a435e7a7c73da12bab53db0d937cb.jpg'),
+(31, 31, 'c162086d40326ef80ae9971f64bfb9df.jpg'),
+(32, 32, '32Product-i'),
+(33, 32, '32Product-ii'),
+(34, 32, '32Product-iii'),
+(35, 33, '33Product-i'),
+(36, 33, '33Product-ii'),
+(37, 33, '33Product-iii'),
+(38, 34, '34Product-i'),
+(39, 34, '34Product-ii'),
+(40, 34, '34Product-iii'),
+(41, 35, '35Product-i'),
+(42, 35, '35Product-ii'),
+(43, 35, '35Product-iii'),
+(44, 36, '36Product-i'),
+(45, 36, '36Product-ii'),
+(46, 36, '36Product-iii'),
+(47, 37, '37Product-i'),
+(48, 37, '37Product-ii');
 
 -- --------------------------------------------------------
 
@@ -227,19 +246,6 @@ CREATE TABLE IF NOT EXISTS `order_line` (
   PRIMARY KEY (`o_id`,`p_id`),
   KEY `FK_order_line2` (`p_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
-
---
--- Dumping data for table `order_line`
---
-
-INSERT INTO `order_line` (`o_id`, `p_id`, `quantity`) VALUES
-(11, 1, 2),
-(11, 2, 2),
-(12, 3, 2),
-(13, 4, 2),
-(14, 5, 2),
-(15, 2, 2),
-(16, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -257,32 +263,29 @@ CREATE TABLE IF NOT EXISTS `products` (
   `description` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `price` double DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `img` varchar(500) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`p_id`),
   KEY `FK_brand1` (`b_id`),
   KEY `FK_catagory1` (`sub_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`p_id`, `name`, `b_id`, `sub_id`, `size`, `description`, `price`, `quantity`, `img`, `status`) VALUES
-(1, 'doll', 1, 20, '36', 'made from vinyl', 1900, 44, '', 1),
-(2, 'kurti2', 6, 20, '37', ' Linen ( Original ), Laggings Fabric : Jersey ( Original )', 1890, 15, '', 1),
-(3, 'kurti3', 6, 20, '38', ' Linen ( Original ), Laggings Fabric : Jersey ( Original )', 1890, 15, '', 1),
-(4, 'leggings1', 6, 22, '34', ' women organic cotton laggings', 1890, 15, '', 1),
-(5, 'leggings2', 6, 22, '35', ' women organic cotton laggings', 1890, 15, '', 1),
-(6, 'admin', 9, 50, '', 'fgy67ftyfvy', 8757, 4, '0', 0),
-(7, 'admin', 9, 50, '', 'fgy67ftyfvy', 8757, 4, '0', 0),
-(8, 'admin', 9, 50, '', 'fgy67ftyfvy', 8757, 4, '0', 0),
-(9, 'earring', 7, 37, '23', '5465y54y665', 234, 6, '0', 0),
-(10, 'T-shirt', 8, 13, '23', '2343354', 23424, 34, '0', 0),
-(11, 'wqwe', 9, 52, '43', 'e534', 3434, 234, '0', 0),
-(12, 'wqwe', 9, 52, '43', 'e534', 3434, 234, ' NULL', 0),
-(13, 'tert', 3, 3, '12', 'sd', 43536, 234, '9fce2e32ae7343ff9c41dba0548c25b0.jpg', 0),
-(14, 'kamij', 7, 17, '36', 'fghtfbhgtjngyjrfyh', 23425, 56, ' e2464327580334e2b15f88c783435ef5.jpg', 0);
+INSERT INTO `products` (`p_id`, `name`, `b_id`, `sub_id`, `size`, `description`, `price`, `quantity`, `status`) VALUES
+(26, 'kurti1', 6, 17, '36', 'sdfffffffffffffffffffffffffgvryhhhhhhhhhhhhhhhrt5ged', 590, 56, 0),
+(27, 'kurti2', 6, 17, '36', '333333sadffffffffffffffffffffwgvsdgvbdfrgvb', 900, 70, 0),
+(28, 'kurti3', 6, 17, '36', 'dfdfdfdfdfdfdfdfdfjkjkjkjkjkjkgvbaeyisrfbsdhevdbrfvuyh', 700, 36, 0),
+(29, 'kurti4', 6, 17, '36', 'vcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfsdhcbdgvuudw', 1000, 36, 0),
+(30, 'kurti1', 5, 17, '36', 'saffduyduyduyciscbjhasfvx mzkgfdhbfhhhhhhhhhed', 600, 36, 0),
+(31, 'kurti2', 5, 17, '36', 'squdghwyfgcasuihcasuidghciua', 560, 36, 0),
+(32, 'Shirt', 8, 1, '41', 'Military style long sleeve men casual shirt. Color: Green, Brown, NvayBlue. Material: Cotton.', 500, 20, 0),
+(33, 'Fashion Hoodies', 8, 2, '41', 'Stylish Hoodie for men. Color: White, Brown, Black. Material: Fabric Cotton', 700, 40, 0),
+(34, 'Sweatshirts', 8, 2, '39,41,43', 'The Modern Sweatshirts. Color: Merun, Brown, Yellow. Material: Fabric Cotton', 600, 30, 0),
+(35, 'Sweaters', 9, 3, '39,41,43', 'Luxury Brand Woolen Sweater Best Quality Men Pullover Fashion Design. Color: NavyBlue, Gray, Black. Material: Cotton, Wool.', 650, 25, 0),
+(36, 'Jackets', 9, 4, '41', 'Full Sleeve Men Cotton Jackets. Color: Maroon, Black, NavyBlue.', 750, 45, 0),
+(37, 'Coats', 8, 4, '43', 'Winter Trench Coats for Men.', 800, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -315,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `sellers` (
 INSERT INTO `sellers` (`s_id`, `name`, `email`, `trade_licence`, `experience`, `cv`, `address`, `dob`, `gender`, `mobile`, `pass`, `status`, `img`) VALUES
 (1, 'Saymon', 'saymon@gmail.com', '11', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-24', 'male', '01835493825', '12345', 1, NULL),
 (2, 'sabiha', 'montaha@gmail.com', '22', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
-(3, 'seller1', 'seller1@gmail.com', '33', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
+(3, 'seller1', 'seller1@gmail.com', '33', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctgg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
 (4, 'seller2', 'seller2@gmail.com', '44', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
 (5, 'seller2', 'seller3@gmail.com', '55', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
 (6, 'seller4', 'seller4@gmail.com', '66', 'working as a sellers in strange store for 3 years', 'no file uploaded', 'ctg', '2022-08-16', 'female', '01835493825', '12345', 1, NULL),
@@ -338,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `sub_category` (
   `cat_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`sub_id`),
   KEY `FK_catagory` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `sub_category`
@@ -424,7 +427,8 @@ INSERT INTO `sub_category` (`sub_id`, `name`, `cat_id`) VALUES
 (77, 'Stand Mixers', 9),
 (78, 'Sandwich Makers', 9),
 (79, 'Tandoor , Grills', 9),
-(80, 'Toasters', 9);
+(80, 'Toasters', 9),
+(81, 'PARTS', 5);
 
 --
 -- Constraints for dumped tables
