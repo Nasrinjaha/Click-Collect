@@ -1,4 +1,4 @@
-<?php include 'customerauth.php' ?>
+<?php include 'include/customerauth.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +33,7 @@
     
 </head>
 <body>
-<?php include 'navbar.php'?>
+<?php include 'include/navbar.php'?>
 <div class="content-area">
 
     <div class="account-page">
@@ -41,7 +41,7 @@
 
           <div class="row">
             <div class="col-sm-3">
-                  <?php include 'sidebar.php' ?>
+                  <?php include 'include/sidebar.php' ?>
             </div>
             <div class="col-sm-9">
                 <h2>Account Newsletter</h2>
@@ -66,6 +66,6 @@
 </div> <!-- End content Area class -->
 
 
-<?php include 'footer.php'?>
+<?php include 'include/footer.php'?>
 </body>
 </html>

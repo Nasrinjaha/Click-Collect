@@ -4,86 +4,91 @@
     $_SESSION['user'] = 'none';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login Page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="Dynamic responsive Ecommerce free web template" />
-    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template" />
-    <meta name="author" content="Maniruzzaman Akash">
-
-    <!-- CSS links -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-
-    
-    <!-- Animate.css -->
-    <link type="text/css" rel="stylesheet" href="css/animate.css" />
-
-    <!-- Owl Carousel CSS-->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.min.css" />
-
-
-
-    <!-- Mega navigation bar -->
-    <link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-
-    <!-- Main css link -->
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
-    <style>
-        .fr{
-            padding-left:30%;
-        }
-    </style>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <style>
+    .bg-secondary {
+        background-color: #054b898a!important;
+    }
+    /* .btn-primary {
+        color: #fff;
+        background-color: #054b898a!important;
+        border-color: #054b898a!important;
+    } */
+    /* .btn-danger {
+    color: #fff;
+    background-color: #0d84fdb8;
+    border-color: #0d84fdb8;
+} */
+    .col{
+        color:#054b898a!important;
+    }
+    .update {
+        padding-left:40%;
+        
+      }
+    .para{
+        font-size:17px ;
+        font-family:Helvetica ;
+    }
+    .cl{
+        padding-left:36%;
+    }
+</style>
 </head>
 <body>
-<?php include 'navbar.php' ?>
-
-<div class="content-area">
-
-    <div class="login-page">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center">Sign In Your Account</h2>
-                    <form method="post" class="cmxform" action="" id="loginForm">
-
-                        <div class="form-group row">
-                            <label for="username" class="col-sm-2 form-control-label">Username/Email:</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="username" class="form-control" id="username" placeholder="Write your email" required />
+<div class="container mt-3">
+  <div class="mt-4 p-4 bg-secondary text-light rounded">
+    <h1>Click And Collect</h1> 
+    <p class="para">welcome to click and collect.Please log in if you are registered before.Otherwise  <a href="register.php">register</a> here</p> 
+  </div>
+  <div class="mt-5 card">
+    <div class="card bg-light text-dark">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mt-5 mb-2">
+                <h2 class="text-center">Login form</h2>
+                    <form method="post" class="cmxform" action="" id="loginForm" name="theform">
+                        <div class="mb-3 mt-3">
+                            <label for="email">Email:</label>
+                            <input type="text" onkeyup="checkform()" name="usermail" class="form-control" id="username"  placeholder="Write your email" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="pwd">Password:</label>
+                            <input type="password" onkeyup="checkform()" name="password" class="form-control" id="password" placeholder="Enter password"  />
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        <div class = "row">
+                            <div class= "col-sm-6 update">
+                                <input type="submit" id="submitbutton" disabled="disabled" name = "login" class="btn btn-primary"  value="Log In" />
+                            </div>
+                            <div class="col-sm-6 ">
+                                <input type="submit" id ="resetbtn" class="btn btn-danger" value="Reset" onclick="resetText()" />
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-sm-2 form-control-label">Password:</label>
-                            <div class="col-sm-8">
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required />
-                            </div>
-                        </div>
-
-                        <div class="form-group row col-sm-offset-2">
-
-                            <input type="checkbox" id="remember" name="remember" />
-                            <label for="remember" style="color:#093; font-weight: normal"><span style="opacity:.5"></span>Remember Me</label><br />
-                        </div>
-
-
-
-                        <div class="form-group row">
-                            <div class="col-sm-offset-2 col-sm-8">
-                                <input type="submit" name = "login" class="btn btn-success btn-lg btn-block" id="submitForm" value="Sign In" />
-                            </div>
-                        </div>
+                        <br>
+                        <div class = "row">
+                                <div class = "col-sm-6">
+                                    <small> don't have an account? <a href = "register.php">create one</a> </small>
+                                </div>
+                                <div class = "col-sm-6 cl">
+                                    <small><a href="forgot_password.php">Forgot Password?</a></small>
+                                </div>
+                        </div>  
                         <?php 
                             if(isset($_POST['login'])){
-                                    $email=$_POST['username'];
+                                    include 'connection.php';
+                                    $email=$_POST['usermail'];
                                     $pass = $_POST['password'];
                                     echo $email;
                                     echo '<br>';
@@ -141,34 +146,26 @@
 
                             }
                         ?>
-
-                        <div class="forget">
-                            <p class="pull-left">
+                        <br>
+                        <!-- <div class = "row">
+                            <div class="pull-left col">
                                 <a href="registerseller.php">Create a new account as a seller</a>
-                            </p>
-                            <p class="pull-center fr">
+                            </div>
+                            <div class="pull-center col">
                                 <a href="register.php">Create a new account as a  customer </a>
-                            </p>
-                            <p class="pull-right">
+                            </div>  
+                            <div class="pull-right col">
                                 <a href="forgot_password.html">Forgot Password</a>
-                            </p>
-                            <div class="clearfix"></div>
-                        </div>
+                            </div>
 
+                        </div> -->
+                        
                     </form>
-
-                    
-
-
-                </div>
-            </div> <!--End Row-->
-
+            </div>
         </div>
-    </div> <!--End Registration page div-->
-
-</div> <!-- End content Area class -->
-
-
-<?php include 'footer.php' ?>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
