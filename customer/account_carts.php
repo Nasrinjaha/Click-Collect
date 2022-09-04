@@ -1,4 +1,4 @@
-<?php include 'customerauth.php' ?>
+<?php include 'include/customerauth.php' ?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -12,79 +12,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Access</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="Dynamic responsive Ecommerce free web template" />
-    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template" />
-    <meta name="author" content="Maniruzzaman Akash">
-
-    <!-- CSS links -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-
-    
-    <!-- Animate.css -->
-    <link type="text/css" rel="stylesheet" href="css/animate.css" />
-
-    <!-- Owl Carousel CSS-->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.min.css" />
-
-
-
-    <!-- Mega navigation bar -->
-    <link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-
-    <!-- Main css link -->
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <style>
+    .bg-secondary {
+        background-color: #054b898a!important;
+    }
+    body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #a8addf33;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    }
+    .update {
+        padding-left:40%;
+        
+      }
+</style>
     
 </head>
 <body>
-   
-
 <?php include 'navbar.php' ?>
-<div class="content-area">
-
-    <div class="account-page">
-        <div class="container">
-
-          <div class="row">
-            <div class="col-sm-3">
-                 <?php include 'sidebar.php' ?>
-            </div>
-            <div class="col-sm-9">
-                <h2>Reset Password</h2>
+<div class="container mt-3">
+        <div class="mt-5 card">
+            <div class="card bg-light text-dark">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <form method="post" class="cmxform" action="" id="signUpForm">
-                            <div class="form-group row">
-                                <label for="oldpass" class="col-sm-2 form-control-label">Old Pass</label>
-                                <div class="col-sm-8">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 mt-5 mb-5">
+                        <h2 class="text-center">Reser Password</h2>
+                        <br>
+                        <form method="post" class="cmxform" action="" id="ReserPassword">
+                            <div class="mb-3 mt-3">
+                                <label for="oldpass">Old Pass</label>
                                     <input type="text" name="oldpass" class="form-control" id="oldpass" minlength="2" >
-                                </div>
                             </div> 
 
-                            <div class="form-group row">
-                                <label for="newpass" class="col-sm-2 form-control-label">New Pass</label>
-                                <div class="col-sm-8">
+                            <div class="mb-3 mt-3">
+                                <label for="newpass">New Pass</label>
                                     <input type="text" name="newpass" class="form-control" id="newpass" minlength="2" >
-                                </div>
                             </div> 
 
-                            <div class="form-group row">
-                                <label for="confirmpass" class="col-sm-2 form-control-label">Confirm Pass</label>
-                                <div class="col-sm-8">
+                            <div class="mb-3 mt-3">
+                                <label for="confirmpass">Confirm Pass</label>
                                     <input type="text" name="confirmpass" class="form-control" id="confirmpass" minlength="2" >
-                                </div>
                             </div> 
 
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-8">
-                                    <input type="submit" class="btn btn-yellow btn-lg" name = "submit" id="submitForm" value="Add" />
-                                </div>
+                            <div class="mb-3 mt-3 text-center">
+                                    <input type="submit" class="btn btn-primary" name = "submit" id="submitForm" value="Reset" />
                             </div>
                             <?php
                                 if(isset($_POST['submit'])){
@@ -114,14 +97,10 @@
                             ?>
                         </form>
                     </div>
-                </div> <!--End Row-->
+                </div> 
             </div>
-        </div> <!--End Row-->
-
+        </div> 
     </div>
-</div> <!--End Account page div-->
-
-</div> <!-- End content Area class -->
 <?php include 'footer.php' ?>
 </body>
 </html>
