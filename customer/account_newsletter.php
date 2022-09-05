@@ -2,38 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Access</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="Dynamic responsive Ecommerce free web template" />
-    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template" />
-    <meta name="author" content="Maniruzzaman Akash">
+<title>Customer Access</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="include/style.css" rel="stylesheet" />
+  <link href="include/style2.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  
+  <style>
+    .pro{
+        padding-left:15%;
+    }
 
-    <!-- CSS links -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-
-    
-    <!-- Animate.css -->
-    <link type="text/css" rel="stylesheet" href="css/animate.css" />
-
-    <!-- Owl Carousel CSS-->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.min.css" />
-
-
-
-    <!-- Mega navigation bar -->
-    <link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-
-    <!-- Main css link -->
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
+    .bot{
+     padding-top:22%;
+   }
+  </style>
     
 </head>
 <body>
-<?php include 'include/navbar.php'?>
+<div class="b">
+    <?php include 'include/navbar.php' ?>
+</div>
 <div class="content-area">
 
     <div class="account-page">
@@ -41,7 +36,7 @@
 
           <div class="row">
             <div class="col-sm-3">
-                  <?php include 'include/sidebar.php' ?>
+                <?php include 'include/sidebar.php' ?>
             </div>
             <div class="col-sm-9">
                 <h2>Account Newsletter</h2>
@@ -65,7 +60,9 @@
 
 </div> <!-- End content Area class -->
 
+<div class="bot">
+   <?php include 'include/footer.php'?>
+</div>
 
-<?php include 'include/footer.php'?>
 </body>
 </html>

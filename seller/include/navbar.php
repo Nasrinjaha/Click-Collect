@@ -22,13 +22,12 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-
-          <li class="nav-item">
-          <a class="nav-link active" href="../logout.php">logout</a>
-        </li>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../logout.php">logout</a>
         </li>
       </ul>
       <form class="d-flex">

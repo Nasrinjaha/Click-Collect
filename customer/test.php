@@ -1,55 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-    
-<div class="container">
+<div class="single-product">
+            <div class="row" id="">
+                <div class="col-md-6 single-top-left">  
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <?php 
+                                $query1 = "select * from products where p_id = $id ";
+                                $table1=mysqli_query($con,$query1);
+                                $row1 = mysqli_fetch_array($table1);
+                                $query = "select * from images where p_id = $id ";
+                                $table=mysqli_query($con,$query);
+                                while($row = mysqli_fetch_array($table)){                   
+                            ?>
+                            <li data-thumb="../images/<?php echo $row['image'];  ?>">
+                                <div class="thumb-image detail_images"> <img src="../images/<?php echo $row['image']; ?>" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                            </li>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</body>
+                           <?php }?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 single-top-right">
+                    <h3 class="item_name"><?php echo $row1['name'];?></h3>
+                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
+                    <div class="single-rating">
+                        <ul>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li class="rating">20 reviews</li>
+                            <li><a href="#">Add your review</a></li>
+                        </ul> 
+                    </div>
+                    <div class="single-price">
+                        <ul>
+                            <li class="product-price"><?php echo $row1['price'];?></li>  
+                            <li><del>$600</del></li> 
+                            <li><span class="off">10% OFF</span></li> 
+                            <li>Ends on: June,5th</li>
+                            <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
+                        </ul>   
+                    </div> 
+                    <p class="single-price-text"><?php echo $row1['description'];?> </p>
+                    <form action="#" method="post">
+                        <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="add" value="1" /> 
+                        <input type="hidden" name="w3ls_item" value="Snow Blower" /> 
+                        <input type="hidden" name="amount" value="540.00" /> 
+                        <button type="submit" class="btn btn-red" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                        <button class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+                    </form>
+                    
+                </div>
+                <div class="clearfix"> </div>  
+            </div>
+            <div class="single-page-icons social-icons"> 
+                <ul>
+                    <li><h4>Share on</h4></li>
+                    <li><a href="#" class="fa fa-facebook-square icon facebook"> </a></li>
+                    <li><a href="#" class="fa fa-twitter-square icon twitter"> </a></li>
+                    <li><a href="#" class="fa fa-google-plus-square icon googleplus"> </a></li>
+                    <li><a href="#" class="fa fa-rss-square icon rss"> </a></li> 
+                </ul>
+            </div>
 
-</html>
+            <div class="single-product-everything">
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productDescriptionCollapse" aria-controls="#productDescriptionCollapse">
+                        <span class="pull-left title-sidebar"><i class="fa fa-info-circle"></i> Product Description</span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productDescriptionCollapse" class="collapse in collapseDiv">
+                        <p><?php echo $row1['description'];?></p>
+                    </div>
+                </div> <!-- End single product extra div -->
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productReviewCollapse" aria-controls="#productReviewCollapse">
+                        <span class="pull-left title-sidebar"> <i class="fa fa-check-square-o"></i>
+                            Product Reviews <span class="badge">2</span>
+                        </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productReviewCollapse" class="collapse collapseDiv">
+                        <div class="review">
+                            <h4>Polash Rana :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                        <div class="review">
+                        <h4>Nur Ahmed :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                    </div>
+                </div> <!-- End single product extra div -->
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productHelpCollapse" aria-controls="#productHelpCollapse">
+                        <span class="pull-left title-sidebar"> <i class="fa fa-question-circle"></i> Help </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productHelpCollapse" class="collapse collapseDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div> <!-- End single product extra div -->
+                
+
+            </div> <!--End Sidebar title div-->
+
+
+
+
+        </div> 
