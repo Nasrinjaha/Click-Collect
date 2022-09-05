@@ -9,6 +9,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Category</a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="subcetegory.php">Link</a>
         </li>
@@ -22,10 +23,9 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-
-          <li class="nav-item">
-          <a class="nav-link active" href="../logout.php">logout</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../logout.php">logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>

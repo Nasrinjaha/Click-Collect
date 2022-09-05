@@ -30,7 +30,14 @@
     .update {
         padding-left:40%;
         
-      }
+    }
+    .new{
+       padding-top:8.5%;
+   }
+   .b{
+         background-color: #b6c5d5!important;
+         
+   }
 </style>
 </head>
 <body>
@@ -136,5 +143,14 @@
   </div>
 </div>
 <script src="script.js"></script>
+<div class="new">
+    <footer>
+    <div class="text-center p-3 b">
+        © 2022 Copyright:
+        <a class="text-Blue" href="../../index.php">ClickAndCollect.com</a>
+    </div>
+        <!-- Copyright -->
+    </footer>
+</div>
 </body>
 </html>

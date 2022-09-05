@@ -1,199 +1,97 @@
-<div class="content-area">
-
-    <div class="account-page">
+<?php include 'include/customerauth.php'; ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Access</title>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+  <link href="include/style.css" rel="stylesheet" />
+  <style>
+  </style>
+    
+</head>
+<body>
+<?php include 'include/navbar.php' ?>
         <div class="container">
-
-          <div class="row">
-            <div class="col-sm-3">
-            <?php include 'sidebar.php' ?>
-            </div>
-            <div class="col-sm-9">
-                <h2>Add products</h2>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <form method="post" class="cmxform" action="add_products.php" enctype="multipart/form-data" id="signUpForm">
-
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-2 form-control-label">Product Name : </label>
-                                <div class="col-sm-8">
-                                     <input class="form-control" id="name" name="name" type="text" placeholder=" enter the name of product" required/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="choose brand" class="col-sm-2 form-control-label">choose brand</label>
-                                <div class="col-sm-8">
-                                <select name = "brand" id ="brand" class="form-control" required>
-                                    <option value="">--choose brand--</option>
-                                    <?php 
-                                    include 'connection.php';
-                                    $query = "select * FROM brand";
-                                    $result = mysqli_query($con,$query);
-                                    
-                                    while($row = mysqli_fetch_array($result)){
-                                    ?>
-                                        <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option>
-                                    
-                                    <?php } ?>
-                                </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Choose category" class="col-sm-2 form-control-label">Choose category: </label>
-                                <div class="col-sm-8">
-                                <select name = "category" id ="category" class="form-control" required>
-                                    <option value="">--choose category--</option>
-                                    <?php 
-                                    $query = "select * FROM category";
-                                    $result = mysqli_query($con,$query);
-                                    
-                                    while($row = mysqli_fetch_array($result)){
-                                    ?>
-                                        <option value="<?php echo $row['cat_id'];?>"><?php echo $row['name'];?></option>
-                                        
-                                        <?php } ?>
-                                </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Choose sub_category" class="col-sm-2 form-control-label">Choose sub_category : </label>
-                                <div class="col-sm-8">
-                                <select name = "sub_category" id ="sub_category" class="form-control" required> 
-                                </select>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label for="size" class="col-sm-2 form-control-label">Size : </label>
-                                <div class="col-sm-8">
-                                <input name = "size" id ="size" class="form-control" required> 
-                                </input>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Description" class="col-sm-2 form-control-label">Description : </label>
-                                <div class="col-sm-8">
-                                    <textarea name="description" id="" cols="20" rows="7" class="form-control" required></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Quantity" class="col-sm-2 form-control-label">Quantity :</label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" id="quantity" name="quantity" type="number" placeholder="write the number of amount" required/>
-                                </div>
-                            </div>
-
-                            
-
-                            <div class="form-group row">
-                                <label for="Price" class="col-sm-2 form-control-label">Price :</label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" id="price" name="price" type="number" placeholder="write the price of products" required />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="image" class="col-sm-2 form-control-label">Image :</label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="file" id="image" name="files[]" multiple  required />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-8 ">
-                                    <input type="submit" class="btn btn-yellow btn-lg" id="submitForm" name="submit" value="Add" />
-                                </div>
-                            </div>
-
-                            <?php
-                                if(isset($_POST['submit'])){
-                                    $name =   $_POST['name'];
-                                    $brand = $_POST['brand'];
-                                    $category = $_POST['category'];
-                                    $sub_category = $_POST['sub_category'];
-                                    $description = $_POST['description'];
-                                    $quantity =  $_POST['quantity']; 
-                                    $price = $_POST['price'];
-                                    $size = $_POST['size'];
-
-
-                                    $query2 = "INSERT INTO products(name,b_id,sub_id,size,description,price,quantity,status)
-                                    VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity',0)";
-                                    if(mysqli_query($con,$query2)){
-                                            echo '<span style= "color:green;">Successfully inserted';
-                                    }
-                                    else{
-                                        echo '<span style= "color:red;">insertion failed';
-                                    }
-
-
-                                    
-                                    $directory = 'images';
-                                    $i=1;
-                                    $pid=0;
-                                    $query = "SELECT *  FROM Products where 1";
-                                    $table = mysqli_query($con,$query);
-                                    while( $row = mysqli_fetch_array($table)){
-                                        $pid = $row['p_id'];
-                                    }
-                                    foreach($_FILES['files']['tmp_name'] as $key => $value){
-                                        $tmpname = $_FILES['files']['tmp_name'][$key];
-                                        $img = $_FILES['files']['name'][$key];
-                                        $separetedimage = explode(".",$img);
-                                        $ext = $separetedimage[1];
-                                        $date = date("D:M:Y");
-                                        $time = date("h:i:s");
-                                        $image = md5($date.$time.$i);//MD5 function for encryption
-                                        $image = $image.".".$ext;
-                                        $i++;
-                                        $query1 = "INSERT INTO images(p_id,image)
-                                        VALUES('$pid','$image')";
-                                        if(mysqli_query($con,$query1)){
-                                                echo '<span style= "color:green;">Successfully inserted';
-                                                if($image!=NULL){
-                                                    move_uploaded_file($_FILES['files']['tmp_name'][$key],"../images/$image");
-                                                }
-                                        }
-                                        else{
-                                            echo '<span style= "color:red;">insertion failed';
-                                        }
-                                    }
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="all-products">
+                    <div class="">
+                        <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>
+                        <div class="products">
+                            <div class="row">
+                                 <?php 
+                                 include 'include/connection.php';
+                                 if(isset($_REQUEST['sub_id'])){
+                                    $sid = $_REQUEST['sub_id'];
+                                 echo $sid;
+                                $query = "select * FROM products where sub_id = $sid ";
                                 }
-                            ?>
-                        </form>
-                    </div>
-                </div> <!--End Row-->
+                                else if(isset($_REQUEST['b_id'])){
+                                    $bid = $_REQUEST['b_id'];
+                                 echo $bid;
+                                $query = "select * FROM products where sub_id = $bid ";
+                                }
+                                else{
+                                    $query = "select * FROM products";
+                                }
+                                 $result = mysqli_query($con,$query);
+                                 $i= 1;
+                                 while($row = mysqli_fetch_array($result)){
+                                    $id = $row['p_id'];
+                                 ?>
+                                      <div class="col-md-3">
+                                        <div class="product-item">
+                                            <div class="product-borde-inner">
+                                                <a href="product_single.php?id=<?php echo $id;?>">
+                                                <?php $query1 = "SELECT * FROM images where p_id = $id";
+                                                 $result1 = mysqli_query($con,$query1); 
+                                                 $row1 = mysqli_fetch_array($result1)  ?>
+                                                    <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
+                                                </a> 
+                                                <div class="product-price">
+                                                    <a href="product_single.php?id=<?php echo $id;?>"><?php echo $row['name'];?></a><br />
+                                                    <span class="prev-price">
+                                                        <del>200$</del>
+                                                    </span>
+                                                    <span class="current-price">
+                                                          <?php echo $row['price'];?>
+                                                    </span>
+                                                </div>
+
+                                                <a href="cart.php"  class="btn btn-cart text-center add-to-cart pull-right">
+                                                    <i class="fa fa-cart-plus"></i>
+                                                    Add to cart
+                                                </a>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
+                                 
+                                 <?php $i++; } ?>
+                               <!-- End Latest products[single] -->  
+                            </div> <!-- End Latest products row-->
+                            <a class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"> 
+                                <span>See More products.. </span>
+                            </a>
+                            <div class="clear"></div>
+                        </div> <!-- End products div-->
+                    </div> <!-- End container latest products-->
+                </div>  <!-- End Latest products -->
             </div>
-        </div> <!--End Row-->
+        </div>
 
     </div>
-</div> <!--End Account page div-->
 
 </div> <!-- End content Area class -->
 
-<?php include 'footer.php' ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function (){
-        $("#category").change(function(){
-            var cat =  $("#category").val();
-            $.ajax({
-                url:"find_subcategory.php",
-                dataType:"json",
-                data : {
-                    "cat_id" : cat
-                },
-                success: function(res){
-                    $("#sub_category").html("<option value=''>--choose sub_category--</option>");   
-                    for(var i=0;i<res.length;i++){
-                        var x = "<option value="+res[i].sub_id+">"+res[i].name+"</option>";
-                        $("#sub_category").append(x);
-                    }
-                }
-            });
-        });
-    });
+<?php include 'include/footer.php' ?>
+
+</body>
+</html>
