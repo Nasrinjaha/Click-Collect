@@ -28,8 +28,8 @@
 </head>
 <body>
 <div class="b">
-               <?php include 'include/navbar.php' ?>
-         </div>
+     <?php include 'include/navbar.php' ?>
+</div>
 <div class="account-page">
          
         <div class="container">
