@@ -71,15 +71,15 @@
                              if(isset($_REQUEST['sub_id'])){
                                 $sid = $_REQUEST['sub_id'];
                              echo $sid;
-                            $query = "select * FROM products where sub_id = $sid ";
+                            $query = "select * FROM products where sub_id = $sid and status=1 ";
                             }
                             else if(isset($_REQUEST['b_id'])){
                                 $bid = $_REQUEST['b_id'];
                              echo $bid;
-                            $query = "select * FROM products where sub_id = $bid ";
+                            $query = "select * FROM products where sub_id = $bid and status=1";
                             }
                             else{
-                                $query = "select * FROM products";
+                                $query = "select * FROM products where  status=1";
                             }
                              $result = mysqli_query($con,$query);
                              $i= 1;

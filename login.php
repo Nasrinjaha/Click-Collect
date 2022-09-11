@@ -54,7 +54,7 @@
 <div class="container mt-3">
   <div class="mt-4 p-4 bg-secondary text-light rounded">
     <h1>Click And Collect</h1> 
-    <p class="para">welcome to click and collect.Please log in if you are registered before.Otherwise  <a href="register.php">register</a> here</p> 
+    <p class="para">welcome to click and collect.Please log in if you are registered before.Otherwise  <a href="register.php">register</a> here.One thing if you want to register as seller <a href="registerseller.php">click</a>  here.</p> 
   </div>
   <div class="mt-5 card">
     <div class="card bg-light text-dark">
@@ -90,7 +90,7 @@
                                     <small> don't have an account? <a href = "register.php">create one</a> </small>
                                 </div>
                                 <div class = "col-sm-6 cl">
-                                    <small><a href="forgot_password.php">Forgot Password?</a></small>
+                                    <small><a href="forgot_password.php" style="line-decoration:none;">Forgot Password?</a></small>
                                 </div>
                         </div>  
                         <?php 

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light ">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Home</a>
@@ -6,25 +7,58 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="subcetegory.php">Link</a>
-        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Link
+            Shop By Brand
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <select name = "brand" id ="brand" class="form-control" required>
+                  <option value="">--choose brand--</option>
+                  <?php 
+                   include 'connection.php';
+                  $query = "select * FROM brand";
+                  $result = mysqli_query($con,$query);
+                  
+                  while($row = mysqli_fetch_array($result)){
+                  ?>
+                      <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option>
+                  
+                  <?php } ?>
+              </select>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop By Department
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+             <select name = "category" id ="category" class="form-control" required>
+                  <option value="">--choose category--</option>
+                  <?php 
+                  include 'connection.php';
+                  $query = "select * FROM category";
+                  $result = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($result)){
+                  ?>
+                      <option value="<?php echo $row['cat_id'];?>"><?php echo $row['name'];?></option>
+                      
+                    <?php } ?>
+              </select>
+          </ul>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop By Sub-category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <select name = "sub_category" id ="sub_category" class="form-control" required> 
+                      </select>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../logout.php">logout</a>
@@ -37,3 +71,26 @@
     </div>
   </div>
 </nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $("#category").change(function(){
+            var cat =  $("#category").val();
+            $.ajax({
+                url:"find_subcategory.php",
+                dataType:"json",
+                data : {
+                    "cat_id" : cat
+                },
+                success: function(res){
+                    $("#sub_category").html("<option value=''>--choose sub_category--</option>");   
+                    for(var i=0;i<res.length;i++){
+                        var x = "<option value="+res[i].sub_id+">"+res[i].name+"</option>";
+                        $("#sub_category").append(x);
+                    }
+                }
+            });
+        });
+    });
+</script>
+

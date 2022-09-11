@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8 mt-5 mb-5">
-                        <h2 class="text-center">Edit Account</h2>
+                        <h2 class="text-center">Add Product</h2>
                         <br>
                         <form method="post" class="cmxform" action="add_products.php" enctype="multipart/form-data" id="signUpForm">
 
@@ -69,7 +69,7 @@
                         <div class="mb-3 mt-3">
                             <label for="Choose category">Choose category: </label>
                             
-                            <select name = "category" id ="category" class="form-control" required>
+                            <select name = "category" id ="category1" class="form-control" required>
                                 <option value="">--choose category--</option>
                                 <?php 
                                 $query = "select * FROM category";
@@ -87,7 +87,7 @@
                         <div class="mb-3 mt-3">
                             <label for="Choose sub_category">Choose sub_category : </label>
                             
-                            <select name = "sub_category" id ="sub_category" class="form-control" required> 
+                            <select name = "sub_category" id ="sub_category1" class="form-control" required> 
                             </select>
                          
                         </div>
@@ -132,9 +132,13 @@
                         </div>
 
                  
-                            <div class="text-center">
-                                <input type="submit" class="btn btn-primary " id="submitForm" name="submit" value="Add" />
-                            </div>
+                        <div class = "row">
+                                <div class = "col-sm-6 update" >
+                                <input type="submit" name = "submit" class="btn btn-success" id="submitForm" value="add" />
+                                </div>
+                                <div class = "col-sm-6">
+                                <a class="btn btn-danger" href = "allproducts.php">back</a> 
+                        </div>
                  
 
                         <?php
@@ -150,7 +154,7 @@
 
 
                                 $query2 = "INSERT INTO products(name,b_id,sub_id,size,description,price,quantity,status)
-                                VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity',0)";
+                                VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity',2)";
                                 if(mysqli_query($con,$query2)){
                                         echo '<span style= "color:green;">Successfully inserted';
                                 }
@@ -206,19 +210,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function (){
-        $("#category").change(function(){
-            var cat =  $("#category").val();
+        $("#category1").change(function(){
+            var cat =  $("#category1").val();
             $.ajax({
-                url:"find_subcategory.php",
+                url:"find_subcategory1.php",
                 dataType:"json",
                 data : {
                     "cat_id" : cat
                 },
                 success: function(res){
-                    $("#sub_category").html("<option value=''>--choose sub_category--</option>");   
+                    $("#sub_category1").html("<option value=''>--choose sub_category--</option>");   
                     for(var i=0;i<res.length;i++){
                         var x = "<option value="+res[i].sub_id+">"+res[i].name+"</option>";
-                        $("#sub_category").append(x);
+                        $("#sub_category1").append(x);
                     }
                 }
             });

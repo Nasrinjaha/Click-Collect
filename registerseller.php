@@ -21,6 +21,13 @@
         background-color: #054b898a!important;
         border-color: #054b898a!important;
    }
+   .new{
+       padding-top:8.5%;
+   }
+   .b{
+         background-color: #b6c5d5!important;
+         
+   }
 </style>
 </head>
 <body>
@@ -114,6 +121,7 @@
                                // $img = $_FILES['image']['name'];
                                 $experience = $_POST['experience'];
                                 $trade = $_POST['tradelicence'];
+                                $cv =$_FILES['cv']['name'];
                                 // echo  $name;
                                 // echo '<br>';
                                 // echo   $mail;
@@ -168,12 +176,13 @@
                                     $row = mysqli_fetch_array($table);
                                     if($row['email']==$mail){
                                         
-                                        echo '<span style= "color:red;">duplicate user!!!';                                                       
+                                        // echo '<span style= "color:red;">duplicate user!!!';
+                                        echo "<script>alert('Data inserted successfully!');</script>";                                                       
     
                                     }
                                     else{
-                                        $query1 = "INSERT INTO `sellers` ( `name`, `email`, `trade_licence`, `experience`, `cv`, `address`, `dob`, `gender`, `mobile`, `pass`, `status`, `img`)
-                                        VALUES('$name','$mail','$trade','$experience','no file attach','$address','$dob','$gender','$contact','$pass1','0','null')";
+                                        $query1 = "INSERT INTO `sellers` ( `name`, `email`, `trade_licence`, `experience`, `cv`, `address`, `dob`, `gender`, `mobile`, `pass`, `img`,status)
+                                        VALUES('$name','$mail','$trade','$experience','$cv','$address','$dob','$gender','$contact','$pass1','null',2)";
                                         if(mysqli_query($con,$query1)){
                                                 echo '<span style= "color:green;">Successfully inserted';
                                                 echo '<span style= "color:blue;">your registration confirm by admin via email.Stay tuned';
@@ -197,6 +206,15 @@
         </div>
     </div>
   </div>
+</div>
+<div class="new">
+    <footer>
+    <div class="text-center p-3 b">
+        © 2022 Copyright:
+        <a class="text-Blue" href="../../index.php">ClickAndCollect.com</a>
+    </div>
+        <!-- Copyright -->
+    </footer>
 </div>
 </body>
 </html>
