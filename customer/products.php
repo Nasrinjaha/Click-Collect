@@ -86,7 +86,9 @@
                              while($row = mysqli_fetch_array($result)){
                                 $id = $row['p_id'];
                              ?>
+                            
                                   <div class="col-md-3">
+                                  <form action="" method="post">
                                     <div class="product-item">
                                         <div class="product-borde-inner">
                                             <a href="product_single.php?id=<?php echo $id;?>">
@@ -103,9 +105,16 @@
                                                 <span class="current-price">
                                                       <?php echo $row['price'];?>
                                                 </span>
-                                                <a  style= "text-decoration: none;" href="cart.php"  class="btn btn-secondary text-center add-to-cart pull-right">
+                                                <div class="mb-3 mr-3">
+                                                    <label for="pwd">Quantity:</label>
+                                                    <input type="number"  name="quantity" class="form-control"  />
+                                                </div>
+                                                <input value="<?php echo $row['p_id'];?>" name="pid" type="hidden">
+                                                <input value="<?php echo $row['quantity'];?>" name="qty" type="hidden">
+                                                <input value="<?php echo $row['name'];?>" name="name" type="hidden">
+                                                <input  name="submit" type="submit" style= "text-decoration: none;" class="btn btn-secondary " value = "Add to cart">
                                                 <!-- <i class="fa fa-cart-plus"></i> -->
-                                                Add to cart
+                                                
                                             </a>
                                             </div>
 
@@ -114,9 +123,43 @@
                                         </div>
                                     </div> 
                                 </div>
-                                <!-- <option value="<?php echo $row['b_id'];?>"><?php echo $row['name'];?></option> -->
+                              
+                             </form>
+                             <?php 
+                             }
+                                if(isset($_POST['submit'])){
+                                    
+                                    $name=$_POST['name'];
+                                    $qty= $_POST['qty']; 
+                                    $quantity= $_POST['quantity'];
+                                    $id = $_POST['pid'];
+                                    // echo $name;
+                                    // echo "<br>";
+                                    // echo $qty;
+                                    // echo "<br>";
+                                    // echo $quantity;
+                                    // echo "<br>";
+                                    // echo $id;
+                                    // echo "<br>";
+                                    if($qty<$quantity){
+                                        echo "<script>alert('Not enough quantity') </script>";
+                                    }
+                                    else if(isset($_SESSION['cart'])){
+                                        $session_array_id = array_column($_SESSION['cart'],"id");
+                                    }
+                                    else{
+                                        $session_array = array(
+                                            'id' => $id,
+                                            "quantity" => $quantity,
+                                            "name" => $name
+
+                                        );
+                                        $_SESSION['cart'][]=$session_array;
+                                    }
+                                }
+                                
+                             ?>
                              
-                             <?php $i++; } ?>
                            <!-- End Latest products[single] -->  
                         </div> <!-- End Latest products row-->
                         <a class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"> 

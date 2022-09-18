@@ -1,7 +1,7 @@
 <?php include 'include/adminauth.php';
 include 'include/connection.php';
 $id = $_REQUEST['id'];
-echo $id;
+//echo $id;
 $query ="select * from products where p_id=$id"; 
 $table=mysqli_query($con,$query);
 $row = mysqli_fetch_array($table);
@@ -77,7 +77,7 @@ echo $size ;
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">   
-<div class="container mt-3">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-3 mt-0 pad">
     <?php include 'include/sidebar.php' ?>
@@ -90,7 +90,7 @@ echo $size ;
                     <div class="col-md-8 mt-5 mb-5">
                         <h2 class="text-center">Add Product</h2>
                         <br>
-                        <form method="post" class="cmxform" action="update_product.php" enctype="multipart/form-data" id="signUpForm">
+                        <form method="post" class="cmxform"  id="signUpForm">
 
                         <div class="mb-3 mt-3">
                             <label for="name">Product Name : </label>
@@ -101,8 +101,8 @@ echo $size ;
                         <div class="mb-3 mt-3">
                             <label for="choose brand">choose brand</label>
                             
-                            <select name = "brand" id ="brand" class="form-control" required>
-                                <option value="'<?php echo $brand?>'"><?php echo $brand?></option>
+                            <select name = "brand" id ="brand1" class="form-control" >
+                                <option value="<?php echo $bid?>"><?php echo $brand?></option>
                                 <?php 
                                 
                                 $query = "select * FROM brand";
@@ -120,7 +120,7 @@ echo $size ;
                         <div class="mb-3 mt-3">
                             <label for="Choose category">Choose category: </label>
                             
-                            <select name = "category" id ="category" class="form-control" required>
+                            <select name = "category" id ="category1" class="form-control" >
                                 <?php 
                                 $query = "select * FROM category";
                                 $result = mysqli_query($con,$query);
@@ -137,8 +137,7 @@ echo $size ;
                         <div class="mb-3 mt-3">
                             <label for="Choose sub_category">Choose sub_category : </label>
                             
-                            <select name = "sub_category" id ="sub_category" class="form-control"> 
-                                <option value=""></option>
+                            <select name = "sub_category" id ="sub_category1" class="form-control"> 
                             </select>
                         </div>
 
@@ -154,7 +153,7 @@ echo $size ;
                         <div class="mb-3 mt-3">
                             <label for="Description">Description : </label>
                             
-                                <textarea name="description" id="" cols="20" rows="7" class="form-control" value = '<?php echo $description?>'></textarea>
+                                <textarea name="description" id="" cols="20" rows="7" class="form-control"><?php echo $description?></textarea>
                            
                         </div>
 
@@ -172,14 +171,6 @@ echo $size ;
                                 <input class="form-control" id="price" name="price" type="number" placeholder="write the price of products" value = '<?php echo $price;?>' />
                            
                         </div>
-
-                        <div class="mb-3 mt-3">
-                            <label for="image">Image :</label>
-                            
-                                <input class="form-control" type="file" id="image" name="files[]" multiple  />
-                          
-                        </div>
-
                  
                         <div class = "row">
                                 <div class = "col-sm-6 update" >
@@ -201,48 +192,35 @@ echo $size ;
                                 $price = $_POST['price'];
                                 $size = $_POST['size'];
 
+                                echo "name = ".$name;
+                                echo '<br>';
+                                echo "brand = ".$brand;
+                                echo '<br>';
+                                echo "sub_cat = ".$sub_category ;
+                                echo '<br>';
+                                echo "description = ".$description ;
+                                echo '<br>';
+                                echo "quantity = ".$quantity ; 
+                                echo '<br>';
+                                echo "price = ".$price;
+                                echo '<br>';
+                                echo "size = ".$size ;
 
-                                $query2 = "INSERT INTO products(name,b_id,sub_id,size,description,price,quantity)
-                                VALUES('$name','$brand','$sub_category','$size','$description','$price','$quantity')";
-                                if(mysqli_query($con,$query2)){
-                                        echo '<span style= "color:green;">Successfully updated';
+                                 $query5 = "UPDATE  products set name='$name',b_id = $brand,sub_id = $sub_category ,size = '$size' ,description = '$description',price= $price,quantity = $quantity where p_id = $id";
+                                if(mysqli_query($con,$query5)){
+                                     echo  "<script>alert('Data updated successfully!');</script>";
                                 }
                                 else{
-                                    echo '<span style= "color:red;">insertion failed';
+                                    echo  "<script>alert('update failed!');</script>";
                                 }
 
-
-                                
-                                $directory = 'images';
-                                $i=1;
-                                $pid=0;
-                                $query = "SELECT *  FROM Products where 1";
-                                $table = mysqli_query($con,$query);
-                                while( $row = mysqli_fetch_array($table)){
-                                    $pid = $row['p_id'];
-                                }
-                                foreach($_FILES['files']['tmp_name'] as $key => $value){
-                                    $tmpname = $_FILES['files']['tmp_name'][$key];
-                                    $img = $_FILES['files']['name'][$key];
-                                    $separetedimage = explode(".",$img);
-                                    $ext = $separetedimage[1];
-                                    $date = date("D:M:Y");
-                                    $time = date("h:i:s");
-                                    $image = md5($date.$time.$i);//MD5 function for encryption
-                                    $image = $image.".".$ext;
-                                    $i++;
-                                    $query1 = "INSERT INTO images(p_id,image)
-                                    VALUES('$pid','$image')";
-                                    if(mysqli_query($con,$query1)){
-                                            echo '<span style= "color:green;">Successfully updated';
-                                            if($image!=NULL){
-                                                move_uploaded_file($_FILES['files']['tmp_name'][$key],"../images/$image");
-                                            }
-                                    }
-                                    else{
-                                        echo '<span style= "color:red;">insertion failed';
-                                    }
-                                }
+                                // $query2 = "UPDATE  products set name='$name',b_id = $brand,sub_id = $sub_category ,size = '$size' ,description = '$description',price= $price,quantity = $quantity where p_id = $id)";
+                                // if(mysqli_query($con,$query2)){
+                                //      echo  "<script>alert('Data updated successfully!');</script>";
+                                // }
+                                // else{
+                                //     echo  "<script>alert('update failed!');</script>";
+                                // }
                             }
                         ?>
                         </form>
@@ -256,10 +234,11 @@ echo $size ;
 
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php 
     $sub = "<script> var sub_cat = []; var sub_cat_name = [];"; 
     $sub = $sub."var sid=".$sid.";";
-    $sub = $sub."alert(sid);";
+    //$sub = $sub."alert(sid);";
     // include 'connection.php';
     $query4 ="select * from sub_category where cat_id=$cid"; 
     $table4 = mysqli_query($con,$query4);
@@ -267,39 +246,38 @@ echo $size ;
         $sub = $sub."sub_cat.push('".$row4['sub_id']."');";
         $sub = $sub."sub_cat_name.push('".$row4['name']."');";
     }  
-     
+     $sub = $sub."console.log(sub_cat);";
     $sub = $sub."</script>";
     echo $sub;
   
 ?>
 <script>   
-$(document).ready(function (){
-    $("#sub_category").html("<option value=''>--choose sub_category--</option>");  
+    
+    $("#sub_category1").html("<option value=''>--choose sub category--</option>");  
     for(var i=0;i<sub_cat.length;i++){
         var x = "<option value="+sub_cat[i];
-        if(sid==sub_cat[i]) {x+="selected";}
+        if(sid==sub_cat[i]) {x+=" selected ";}
         x+=">"+sub_cat_name[i]+"</option>";
-        $("#sub_category").append(x);
+        $("#sub_category1").append(x);
     }
 
-} 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
     $(document).ready(function (){
-        $("#category").change(function(){
-            var cat =  $("#category").val();
+        $("#category1").change(function(){
+            var cat =  $("#category1").val();
             $.ajax({
-                url:"find_subcategory.php",
+                url:"find_subcategory1.php",
                 dataType:"json",
                 data : {
                     "cat_id" : cat
                 },
                 success: function(res){
-                    $("#sub_category").html("<option value=''>--choose sub_category--</option>");   
+                    $("#sub_category1").html("<option value=''>--choose sub_category--</option>");   
                     for(var i=0;i<res.length;i++){
                         var x = "<option value="+res[i].sub_id+">"+res[i].name+"</option>";
-                        $("#sub_category").append(x);
+                        $("#sub_category1").append(x);
                     }
                 }
             });

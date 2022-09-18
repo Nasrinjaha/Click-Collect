@@ -26,7 +26,7 @@
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">   
-<div class="container mt-0">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-3 mt-0 pad">
     <?php include 'include/sidebar.php' ?>
@@ -141,9 +141,9 @@
                                                 echo '<span style= "color:red;">already assigned a customers!!!';                                                       
                                             }
                                             else{
-                                                $query1 = "INSERT INTO customers(name,email,address,dob,gender, mobile,pass,img,status)
-                                                VALUES('$name','$mail','$address','$dob','$gender','$contact','$pass1','$image','1')";
-                                                if(mysqli_query($con,$query1)){
+                                                //$query1 = "INSERT INTO customers(name,email,address,dob,gender, mobile,pass,img,status)
+                                               // VALUES('$name','$mail','$address','$dob','$gender','$contact','$pass1','$image','1')";
+                                               if(mysqli_query($con,"CALL insert_customers('$name','$mail','$address','$dob','$gender','$contact','$pass1','null','1')")){
                                                         echo '<span style= "color:green;">Successfully inserted';
                                                         echo "<script>window.location.href='customers.php'</script>" ;
                                                         // echo "<script>window.location.href='profile.php?email=".$mail."&pass=".$pass1."'</script>" ;

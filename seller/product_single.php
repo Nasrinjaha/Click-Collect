@@ -236,7 +236,6 @@
         img = img+1;
         if(img==l){
             img = 0;
-        
         }
         imgtag.src='../images/'+photo[img];
     }

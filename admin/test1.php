@@ -37,10 +37,10 @@
 <div class="account-page">   
 <div class="container-fluid">
 <div class="row">
-<div class="col-sm-3 mt-0 pad">
+<div class="col-sm-2 mt-0 pad">
     <?php include 'include/sidebar.php' ?>
 </div>
-    <div class="col-sm-9">
+    <div class="col-sm-10">
         <div class="mt-1 card">  
             <div class="card bg-light text-dark">
                 <div class="row">
