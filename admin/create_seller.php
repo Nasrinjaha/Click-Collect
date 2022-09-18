@@ -26,7 +26,7 @@
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">   
-<div class="container mt-3">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-3 mt-0 pad">
     <?php include 'include/sidebar.php' ?>
@@ -173,20 +173,19 @@
                                     $row = mysqli_fetch_array($table);
                                     if($row['email']==$mail){
                                         
-                                        echo '<span style= "color:red;">duplicate user!!!';                                                       
-    
+                                        //echo '<span style= "color:red;">duplicate user!!!'; 
+                                                                                              
+                                        echo "<script>alert('duplicate user!!!');</script>";
                                     }
                                     else{
-                                        $query1 = "INSERT INTO `sellers` ( `name`, `email`, `trade_licence`, `experience`, `cv`, `address`, `dob`, `gender`, `mobile`, `pass`, `status`, `img`)
-                                        VALUES('$name','$mail','$trade','$experience','$cv','$address','$dob','$gender','$contact','$pass1','1','null')";
-                                        if(mysqli_query($con,$query1)){
-                                                echo '<span style= "color:green;">Successfully inserted';
-                                                // echo '<span style= "color:blue;">your registration confirm by admin via email.Stay tuned';
-                                                // echo "<script>window.location.href='seller/account.php'</script>" ;
-                                                
+                                        //$query1 = "INSERT INTO `sellers` ( `name`, `email`, `trade_licence`, `experience`, `cv`, `address`, `dob`, `gender`, `mobile`, `pass`, `status`, `img`)
+                                        //VALUES('$name','$mail','$trade','$experience','$cv','$address','$dob','$gender','$contact','$pass1','1','null')";
+                                        if(mysqli_query($con,"CALL insert_sellers('$name','$mail','$trade','$experience','$cv','$address','$dob','$gender','$contact','$pass1','null','1')")){
+                                            echo "<script>alert('Data inserted successfully!');</script>";     
                                         }
                                         else{
-                                            echo '<span style= "color:red;">insertion failed';
+                                            //echo '<span style= "color:red;">insertion failed';
+                                            echo "<script>alert('insertion failed!');</script>";
                                         }
     
                                     }

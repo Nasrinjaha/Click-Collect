@@ -29,7 +29,7 @@
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">   
-<div class="container mt-2">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-3 mt-0 pad">
     <?php include 'include/sidebar.php' ?>
@@ -69,6 +69,7 @@
                             include 'include/connection.php';
                             $query = "select * from products where status='1'";
                             $table = mysqli_query($con,$query);
+                           // $table = mysqli_query($con,"CALL read_data_products()");
                             while($row = mysqli_fetch_array($table)){                   
                         ?>
                         <tr>
