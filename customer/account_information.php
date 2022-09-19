@@ -27,7 +27,7 @@
   <link href="include/style.css" rel="stylesheet" />
   <style>
    .pad{
-   padding-right :5%;
+     padding-right :5%;
    } 
 </style>
     
@@ -37,7 +37,7 @@
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">   
-<div class="container mt-3">
+<div class="container-fluid">
     <div class="row">
   
             <div class="col-sm-3 mt-0 pad">

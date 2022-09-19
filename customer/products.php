@@ -27,6 +27,9 @@
     text-decoration-style: initial;
     text-decoration-color: initial;
   }
+  .form-control{
+      border: 1px solid #171819;
+   }
 
   </style>
     
@@ -100,13 +103,13 @@
                                             <div class="product-price">
                                                 <a style= "text-decoration: none;" href="product_single.php?id=<?php echo $id;?>"><?php echo $row['name'];?></a><br />
                                                 <span class="prev-price">
-                                                    <del>200$</del>
+                                                    <del><?php echo $row['prev_price'];?>$</del>
                                                 </span>
                                                 <span class="current-price">
-                                                      <?php echo $row['price'];?>
+                                                      <?php echo $row['price'];?>$
                                                 </span>
                                                 <div class="mb-3 mr-3">
-                                                    <label for="pwd">Quantity:</label>
+                                                    <label for="pwd"> <b> Quantity:</b></label>
                                                     <input type="number"  name="quantity" class="form-control"  />
                                                 </div>
                                                 <input value="<?php echo $row['p_id'];?>" name="pid" type="hidden">
