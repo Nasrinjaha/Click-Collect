@@ -4,4 +4,7 @@
 //       foreach($_SESSION['cart'])
 //    }\
     var_dump($_SESSION['cart']);
+    foreach($combinedArray as $value){
+	    echo $value . "<br>";
+	}
 ?>
