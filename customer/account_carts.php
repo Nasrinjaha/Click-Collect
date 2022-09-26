@@ -1,136 +1,189 @@
-<?php include 'include/customerauth.php' ?>
+<?php 
+   include 'include/customerauth.php';
+  // session_start();
+   
+   
+    
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Customer Access</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="Dynamic responsive Ecommerce free web template" />
-    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template" />
-    <meta name="author" content="Maniruzzaman Akash">
-
-    <!-- CSS links -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-
-    
-    <!-- Animate.css -->
-    <link type="text/css" rel="stylesheet" href="css/animate.css" />
-
-    <!-- Owl Carousel CSS-->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.min.css" />
-
-
-
-    <!-- Mega navigation bar -->
-    <link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-
-    <!-- Main css link -->
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
-    
+<meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Admin Access</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+        <link href="include/style.css" rel="stylesheet" /> 
+        <style>
+            .pad{
+                padding-right :5%;
+            } 
+            .bot{
+                padding-top:20%;
+            }
+            .add{
+                padding-left:2.5%;
+            }
+            /* .but{
+                height: 50px;
+                width: 300px;
+                text-align: center;
+                /* padding-left : 100px; */
+           /* } */
+        </style>
 </head>
 <body>
-   
-<?php include 'navbar.php'?>
-<div class="content-area">
+<div class="b">
+    <?php include 'include/navbar.php' ?>
+</div>
 
-    <div class="account-page">
-        <div class="container">
 
-          <div class="row">
-            <div class="col-sm-3">
-                 <?php include 'sidebar.php' ?>
+<div class="account-page">   
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2">
+    <?php include 'include/sidebar.php' ?>
+</div>
+    <div class="col-sm-10">
+        <div class="mt-1 card">  
+            <div class="card bg-light text-dark">
+                <div class="row">
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="col-md-12 mt-0 mb-5 ml-1">
+                        <h2 class="text-center">My Shopping Cart</h2>
+                        <br>
+                        <table class="table table-striped" id = "cartproducts">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product Name</th>
+                            <th>Brand</th>
+                            <th>Size</th>
+                            <th>Qunatiy</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            //include 'inlude/navbar.php';
+                            include 'include/connection.php';
+                            $tprice = 0;
+                            if(isset($_SESSION['cart'])){
+                            foreach($_SESSION['cart'] as $key=>$value){ 
+                                $vprice = $value['price']*$value['quantity']; 
+                                $tprice+=$vprice;              
+                        ?>
+                        <tr>
+                        <td></td>
+                                <td><?php echo $value['name']; ?></td>
+                                <td><?php echo $value['brand'];?></td>
+                                <td><?php echo $value['size'];?></td>
+                                <td><?php echo $value['quantity'];?></td>
+                                <td>$<?php echo $vprice;?></td>
+                                
+                                <td>                                
+                                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $value['id'];?>">Remove</a>
+                                <div class="modal" id="myModal<?php echo $value['id'];?>">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Remove Confirmation!</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                       Do you want to remove <b><?php echo $value['name'];?></b> from your cart?
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a class = "btn btn-primary" href ="remove_cart.php?id=<?php echo $value['id'];?>">yes</a>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    </div>
+                                </td>
+                                                       
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan='4'></td>
+                                <td><b> Total Price</b></td>
+                                <td><b>$<?php echo $tprice ?></b></td>
+                                
+                            </tr>
+                            <tr>
+                                <td colspan='3'></td> 
+                                <td colspan='2'><a  href="payment.php" class="btn btn-success but">Proceed to Success</a></td>
+                                <td colspan='1'></td>
+                                <td colspan='1'><button type="button" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#allModal">Clear All</button>
+                                <div class="modal" id="allModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Clear Cart Confirmation!</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                      <b> Do you want to clear your cart? </b>?
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a class = "btn btn-primary" href ="remove_cart.php?id=-1">yes</a>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    </div>
+                            
+                                </td> 
+                               
+                            </tr>
+                        </tbody>
+                        <?php } ?>
+                    </table>
+                    </div>
+                </div> 
             </div>
-            <div class="col-sm-9">
-                <h2>Account Carts</h2>
-                <div class="cart-page">
-                    <form action="checkout.php" method="post">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th width="50%">Item</th>
-                                    <th width="10%">Quantity</th>
-                                    <th width="20%">Unit Price</th>
-                                    <th width="20%">Total Price</th>
-                                </tr>
-                            </thead>
+        </div> 
 
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="images/product-slide/product2.png" width="50" alt="" class="img img-thumbnail pull-left">
-                                        <span class="pull-left cart-product-option">
+    </div>
+</div> 
 
-                                            <strong>Digital Camera</strong><br />
-                                            <form action="cart_remove.php" method="get" accept-charset="utf-8">
-                                                <input type="hidden" name="product_id" value="1">
-                                                <input type="submit" class="btn btn-red btn-sm" name="" value="Remove Item">
-                                            </form>
-
-                                        </span>
-                                        <div class="clearfix"></div>
-                                    </td>
-                                    <td><input type="number" min="1" name="product_quantity_p1" value="2" class="form-control product_quantity_p1" /></td>
-                                    <td>200$</td>
-                                    <td><p class="total_ammount_p1">400$</p></td>
-                                </tr>                
-                                <tr>
-                                    <td>
-                                        <img src="images/product-slide/product1.png" width="50" alt="" class="img img-thumbnail pull-left">
-                                        <span class="pull-left cart-product-option">
-
-                                            <strong>Samsung Galaxy J7</strong><br />
-                                            <form action="cart_remove.php" method="get" accept-charset="utf-8">
-                                                <input type="hidden" name="product_id" value="1">
-                                                <input type="submit" class="btn btn-red btn-sm" name="" value="Remove Item">
-                                            </form>
-
-                                        </span>
-                                        <div class="clearfix"></div>
-                                    </td>
-                                    <td><input type="number" min="1" name="product_quantity_p2" value="4" class="form-control product_quantity_p2" /></td>
-                                    <td>300$</td>
-                                    <td><p class="total_ammount_p2">1200$</p></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td colspan="1"><strong>Total:</strong></td>
-                                    <td></td>
-                                    <td>
-                                        <p><span class="total_product_sum">1600$</span></p>
-                                    </td>
-                                    <div class="clearfix"></div>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">
-                                        <input type="submit" class="btn btn-yellow btn-lg pull-right margin-bottom-20" name="" value="Continue to Checkout" />
-                                        <a href="products.php" class="btn btn-success btn-lg pull-right margin-right-20">
-                                            <i class="fa fa-plus"></i> Add More Products</a>
-
-                                            <div class="clearfix"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                        </form>
-                    </div> <!--End Cart page-->
-
-                </div>
-            </div> <!--End Row-->
-
-
-
-        </div>
-    </div> <!--End Account page div-->
-
-</div> <!-- End content Area class -->
-
-
-<?php include 'footer.php'?>
+</div>
+</div>
+<script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#cartproducts").DataTable({
+                'columnDefs': [ {
+                    'targets': [0,5], 
+                    'orderable': false, 
+                }]
+            });
+        })
+</script>
+<div class="bot">
+   <?php include 'include/footer.php' ?>
+</div>
 </body>
 </html>

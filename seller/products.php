@@ -79,7 +79,7 @@
                             $query = "select * FROM products where sub_id = $bid and status=1";
                             }
                             else{
-                                $query = "select * FROM products status=1";
+                                $query = "select * FROM products where status=1";
                             }
                              $result = mysqli_query($con,$query);
                              $i= 1;

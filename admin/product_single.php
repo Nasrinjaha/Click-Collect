@@ -84,7 +84,7 @@
                             </div>
                             <div class="row im">
                                 <div class="col-md-4">
-                                   <button class="btn btn-danger" onclick="previousimage()">previous image</button>
+                                   <button class="btn btn-primary" onclick="previousimage()">previous image</button>
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-primary" onclick = "nextimage()">next image</button>

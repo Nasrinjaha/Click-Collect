@@ -55,7 +55,7 @@
                             </div> -->
                             <div class = "row">
                                 <div class= "col-sm-6 up">
-                                    <a href="test.php" class="btn btn-primary">Cash on delivery</a>
+                                    <a href="payment.php" class="btn btn-success">Cash on delivery</a>
                                 </div>
                                 <div class="col-sm-6">
                                     <a href="payment/index.php" class="btn btn-primary">Card Payment</a>

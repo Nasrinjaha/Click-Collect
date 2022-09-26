@@ -34,7 +34,7 @@
     <?php include 'include/navbar.php' ?>
 </div>
 <div class="account-page">  
-        <div class="container">
+        <div class="container-fluid">
            <div class="row">
             <div class="col-sm-3">
                <?php include 'include/sidebar.php' ?>
