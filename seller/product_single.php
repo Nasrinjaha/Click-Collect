@@ -31,9 +31,9 @@
         padding-left:10%;
     }
     .p{
-        font-family:italic;
-        font-weight: 900;
-        font-size:1.1rem;
+        font-family: Arial Black;
+        font-weight:300;
+        font-size:1.2rem;
     }
     .item_name{
         font-weight: 1000;
@@ -83,7 +83,7 @@
                             </div>
                             <div class="row im">
                                 <div class="col-md-4">
-                                   <button class="btn btn-danger" onclick="previousimage()">previous image</button>
+                                   <button class="btn btn-primary" onclick="previousimage()">previous image</button>
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-primary" onclick = "nextimage()">next image</button>

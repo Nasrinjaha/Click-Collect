@@ -55,7 +55,7 @@
                             <br>
                             <br>
                         </div>
-                        <table class="table table-striped" id = "allproducts">
+                        <table class="table table-striped" id = "allproductss">
                         <thead>
                         <tr>
                             <th></th>
@@ -64,7 +64,6 @@
                             <th>Brand</th>
                             <th>Sub_Category</th>
                             <th>Size</th>
-                            <th>Description</th>
                             <th>Price</th>
                             <th>Qunatiy</th>
                             <th>Action</th>
@@ -97,7 +96,6 @@
                                 ?>
                                 <td><?php echo $row3['name'];?></td>
                                 <td><?php echo $row['size'];?></td>
-                                <td><?php echo $row['description'];?></td>
                                 <td><?php echo $row['price'];?></td>
                                 <td><?php echo $row['quantity'];?></td>
                                 <td>                                
@@ -147,9 +145,9 @@
 <script src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
         $(document).ready(function(){
-            $("#allproducts").DataTable({
+            $("#allproductss").DataTable({
                 'columnDefs': [ {
-                    'targets': [0,9], 
+                    'targets': [0,8], 
                     'orderable': false, 
                 }]
             });

@@ -14,6 +14,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="include/style.css" rel="stylesheet" />
   <link href="include/style2.css" rel="stylesheet" />
+  <link href="include/style3.css" rel="stylesheet" />
   <style>
     .pro{
         padding-left:15%;
@@ -29,6 +30,9 @@
   }
   .form-control{
       border: 1px solid #171819;
+   }
+   .crt{
+     padding-left:10px;
    }
 
   </style>
@@ -46,7 +50,8 @@
         <div class="col-sm-10 col-md-10 col-lg-10">
             <ol class="breadcrumb breadcrumb1">
                 <li><a href="account.php">Home</a></li>
-                <li class="active"> / Products</li>
+                <pre> || </pre>
+                <div class= "crt"><li><a href="account_carts.php">My Cart</a></li></div>
             </ol>
             <div class="product-top">
                 <h4>All Products</h4>
@@ -73,12 +78,12 @@
                              include 'include/connection.php';
                              if(isset($_REQUEST['sub_id'])){
                                 $sid = $_REQUEST['sub_id'];
-                             echo $sid;
+                            // echo $sid;
                             $query = "select * FROM products where sub_id = $sid and status=1 ";
                             }
                             else if(isset($_REQUEST['b_id'])){
                                 $bid = $_REQUEST['b_id'];
-                             echo $bid;
+                             //echo $bid;
                             $query = "select * FROM products where sub_id = $bid and status=1";
                             }
                             else{
@@ -97,7 +102,13 @@
                                             <a href="product_single.php?id=<?php echo $id;?>">
                                             <?php $query1 = "SELECT * FROM images where p_id = $id";
                                              $result1 = mysqli_query($con,$query1); 
-                                             $row1 = mysqli_fetch_array($result1)  ?>
+                                             $row1 = mysqli_fetch_array($result1);
+                                             $br =  $row['b_id'];
+                                             $query2 = "SELECT * FROM brand where b_id = $br";
+                                             $result2 = mysqli_query($con,$query2); 
+                                             $row2 = mysqli_fetch_array($result2);
+
+                                               ?>
                                                 <img src="../images/<?php echo $row1['image']; ?>" width="150" height="150" class="img img-responsive"/>
                                             </a> 
                                             <div class="product-price">
@@ -113,8 +124,11 @@
                                                     <input type="number"  name="quantity" class="form-control"  />
                                                 </div>
                                                 <input value="<?php echo $row['p_id'];?>" name="pid" type="hidden">
+                                                <input value="<?php echo $row2['name'];?>" name="brand" type="hidden">
+                                                <input value="<?php echo $row['size'];?>" name="size" type="hidden">
                                                 <input value="<?php echo $row['quantity'];?>" name="qty" type="hidden">
                                                 <input value="<?php echo $row['name'];?>" name="name" type="hidden">
+                                                <input value="<?php echo $row['price'];?>" name="price" type="hidden">
                                                 <input  name="submit" type="submit" style= "text-decoration: none;" class="btn btn-secondary " value = "Add to cart">
                                                 <!-- <i class="fa fa-cart-plus"></i> -->
                                                 
@@ -136,6 +150,9 @@
                                     $qty= $_POST['qty']; 
                                     $quantity= $_POST['quantity'];
                                     $id = $_POST['pid'];
+                                    $price = $_POST['price'];
+                                    $brand =$_POST['brand'];
+                                    $size = $_POST['size'];
                                     // echo $name;
                                     // echo "<br>";
                                     // echo $qty;
@@ -149,12 +166,27 @@
                                     }
                                     else if(isset($_SESSION['cart'])){
                                         $session_array_id = array_column($_SESSION['cart'],"id");
+                                        if(!in_array($id,$session_array_id)){
+                                            $session_array = array(
+                                                'id' => $id,
+                                                "quantity" => $quantity,
+                                                "name" => $name,
+                                                "price" => $price,
+                                                "brand" => $brand,
+                                                "size" => $size
+    
+                                            );
+                                            $_SESSION['cart'][]=$session_array;
+                                        }
                                     }
                                     else{
                                         $session_array = array(
                                             'id' => $id,
                                             "quantity" => $quantity,
-                                            "name" => $name
+                                            "name" => $name,
+                                            "price" => $price,
+                                            "brand" => $brand,
+                                            "size" => $size
 
                                         );
                                         $_SESSION['cart'][]=$session_array;
