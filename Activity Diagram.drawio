@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-26T15:48:15.874Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="VzQywX5MqPnKiR7SdEY2" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-27T21:12:07.715Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="FVWgqI7_M2cDN9PY9RT8" version="20.3.7" type="github">
   <diagram id="6o-PFwS-r8t_ji7xHeHs" name="Page-1">
     <mxGraphModel dx="1038" dy="1740" grid="1" gridSize="8" guides="0" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F1FAEE" math="0" shadow="0">
       <root>
@@ -823,9 +823,6 @@
         <mxCell id="ECX7IMNQ7v3GyHFBv8ip-501" value="customer view" style="whiteSpace=wrap;html=1;fillColor=#A8DADC;strokeColor=#457B9D;fontColor=#1D3557;rounded=1;" parent="ePUnUOnn1ZwYabv3tE3A-7" vertex="1">
           <mxGeometry x="1144" y="240" width="80" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="ECX7IMNQ7v3GyHFBv8ip-511" value="" style="line;strokeWidth=4;html=1;shadow=0;glass=0;labelBackgroundColor=none;labelBorderColor=none;fontFamily=Times New Roman;fontSize=18;fillColor=#A8DADC;strokeColor=#457B9D;fontColor=#1D3557;rounded=1;" parent="ePUnUOnn1ZwYabv3tE3A-7" vertex="1">
-          <mxGeometry x="1480" y="104" width="152" height="8" as="geometry" />
-        </mxCell>
         <mxCell id="ECX7IMNQ7v3GyHFBv8ip-512" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=19;labelBackgroundColor=#F1FAEE;strokeColor=#457B9D;fontColor=#1D3557;rounded=1;entryX=0.244;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;" parent="ePUnUOnn1ZwYabv3tE3A-7" target="ECX7IMNQ7v3GyHFBv8ip-330" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="1376" y="304" as="sourcePoint" />
@@ -1260,7 +1257,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LL9wInRAn0DoC89Civnt-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Activity Diagram of Ecommerce Sysem&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="LL9wInRAn0DoC89Civnt-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Activity Diagram of Ecommerce Sysem&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="16" y="-1160" width="280" height="40" as="geometry" />
         </mxCell>
       </root>
