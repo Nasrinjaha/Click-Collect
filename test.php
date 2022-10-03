@@ -1,1 +1,0 @@
-name, email, trade_licence, experience, cv, address, dob, gender, mobile, pass, status, img
