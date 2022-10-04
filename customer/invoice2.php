@@ -189,7 +189,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><b> Paid Amount</b></td>
-                                <td><b>$<?php echo $tprice;?></b></td>
+                                <td><b>$0</b></td>
                                 
                             </tr>
                             <tr>
@@ -198,7 +198,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><b> Due</b></td>
-                                <td><b>$0</b></td>
+                                <td><b>$<?php echo $tprice;?></b></td>
                                 
                             </tr>
                         </tbody>

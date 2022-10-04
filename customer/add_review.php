@@ -1,9 +1,13 @@
 <?php 
+
 include 'include/customerauth.php';
 include 'include/connection.php';
+$id = $_REQUEST['id'];
 $cid =  $_SESSION['id'];
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +23,7 @@ $cid =  $_SESSION['id'];
    padding-right :5%;
    } 
    .bot{
-    padding-top:15%;
+    padding-top:10%;
    }
 </style>
     
@@ -42,18 +46,34 @@ $cid =  $_SESSION['id'];
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8 mt-5 mb-5">
-                        <h2 class="text-center">Account News Letter</h2>
+                        <h2 class="text-center">Add Review page</h2>
                         <br>
-                        <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="well">
-                                <h3>News Letters</h3>
-                                <p>Do you want to get the latest product news and promotion offers then make it on otherwise off it.</p>
-                                <!-- <p class="pull-right"><a href="#"><i class="fa fa-edit"></i> Edit</a></p> -->
-                                <div class="clearfix"></div>
+                        <form method="post" class="cmxform" action="" id="Review">
+                            <div class="mb-3 mt-3">
+                                    <label for="oldpass">Add your review</label>
+                                    <br>
+                                    <br>
+                                    <textarea name="review" id="review" cols="115" rows="6" required></textarea>
+                            </div> 
+
+                            <div class="mb-3 mt-3 text-center">
+                                    <input type="submit" class="btn btn-primary" name = "submit" id="submitForm" value="Add" />
                             </div>
-                        </div>
-                        </div>
+                            <?php
+                                if(isset($_POST['submit'])){
+                                    $review = $_POST['review'];
+                                    $query1 = "insert into review(p_id,review,c_id) 
+                                             values($id,'$review',$cid)";
+                                        if(mysqli_query($con,$query1)){
+                                            echo '<span style= "color:green;">Successfully added';
+                                        }
+                                        else{
+                                        echo '<span style= "color:red;"> insertion failed!!!';
+                                        }
+                                    
+                                }
+                            ?>
+                        </form>
                     </div>
                 </div> 
             </div>
@@ -68,6 +88,7 @@ $cid =  $_SESSION['id'];
 <div class="bot">
       <?php include 'include/footer.php' ?>
 </div>
+
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/webslidemenu.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

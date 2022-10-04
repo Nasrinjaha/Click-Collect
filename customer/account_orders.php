@@ -66,6 +66,7 @@
                             <th>Size</th>
                             <th>Qunatiy</th>
                             <th>Cost</th>
+                            <th>Order Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -104,6 +105,7 @@
                                         <td><?php echo $row3['size'];?></td>
                                         <td><?php echo $row2['quantity'];?></td>
                                         <td><?php echo $vprice;?></td>
+                                        <td><?php echo $row['order_date'];?></td>
                                     </tr>
                                     
                                <?php } ?>
