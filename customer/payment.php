@@ -4,6 +4,14 @@
         if(!isset($_SESSION['cart'])){
            header('Location: products.php'); 
         }
+        // foreach($_SESSION['cart'] as $key=>$value){ 
+        //     $pid=$value['id']; 
+        //     $quantity=$value['quantity']; 
+        //     echo $pid;
+        //     echo "<br>";
+        //     echo $quantity;
+        // }
+
         $idcus = $_SESSION['id'];
         $date=date("Y-m-d");
 ?>
@@ -72,45 +80,11 @@
 
                             $address = $_POST['address'];
                             $_SESSION['cart']['address']=$address;
-                            $sql = "insert into customer_order(c_id,Delivery_address,order_date) values($idcus,'$address','$date')";
-									$result = mysqli_query($con,$sql);
-									if($result){
-										//echo "data succefully inserted into customer_order table";
-									}
-									else{
-										echo "error".mysqli_error($con);
-									}
-
-									$last_o_id = mysqli_insert_id($con);
-                                    if(isset($_SESSION['cart'])){
-										foreach($_SESSION['cart'] as $key=>$value){ 
-											$pid=$value['id']; 
-											$quantity=$value['quantity']; 
-											$sql1 = "insert into order_line(o_id,p_id,quantity) values($last_o_id,$pid,$quantity)";
-											$result1 = mysqli_query($con,$sql1);
-											if($result1){
-												
-											}
-											else{
-												//echo "error".mysqli_error($con);
-											}            
-										}
-									} 
-
-									$sql = "insert into invoice(o_id) values($last_o_id)";
-									$result = mysqli_query($con, $sql);
-									if(!$result){
-                                        echo "error".mysqli_error($con);
-									}
-                                    else{
-                                        if(isset($_SESSION['cart'])){
-                                            unset($_SESSION['cart']);
-                                        }
-                                      
-                                   }
+                            echo "<script>window.location.href='cash_deliver.php'</script>" ;
+                             
                           }
                           else if(isset($_POST['card'])){
-
+                             
                             $address = $_POST['address'];
                             $_SESSION['cart']['address']=$address;
                             echo "<script>window.location.href='payment/index.php'</script>" ;

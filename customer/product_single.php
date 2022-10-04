@@ -98,7 +98,7 @@
                     <div class="single-rating">
                         <ul>
                             <li class="rating"><b> 20 reviews</b></li>
-                            <li><b><a href="#">Add your review</a></b></li>
+                            <li><b><a href="add_review.php?id=<?php echo $id;?>">Add your review</a></b></li>
                             <li><b>Price : <?php echo $row1['price'];?></b></li>         
                             <li><b><span class="off">10% OFF</span></b></li> 
                             <li><b>Ends on: June,5th</b></li>
@@ -176,12 +176,18 @@
                     </a>
                     <div id="productReviewCollapse" class="collapse collapseDiv">
                         <div class="review">
-                            <h4>Polash Rana :</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-                        </div>
-                        <div class="review">
-                        <h4>Nur Ahmed :</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                             <?php $sql = "select * from review where p_id = $id";
+
+                                   $table = mysqli_query($con,$sql);
+                                   while($row=mysqli_fetch_array($table)){
+                                     $cid = $row['c_id'];
+                                     $sql2 = "select * from customers where c_id = $cid";
+                                     $table2 = mysqli_query($con,$sql2);
+                                     $row2=mysqli_fetch_array($table2);
+                                     ?>
+                                            <h4><?php echo $row2['name'];?></h4>
+                                            <p> <?php echo $row['review'];?></p>
+                               <?php  } ?>
                         </div>
                     </div>
                 </div>
