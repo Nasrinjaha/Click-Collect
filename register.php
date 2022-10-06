@@ -38,13 +38,17 @@
          background-color: #b6c5d5!important;
          
    }
+   a {
+    color: #343a40;
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
 <div class="container mt-3">
   <div class="mt-4 p-4 bg-secondary text-light rounded">
     <h1>Click And Collect</h1> 
-    <p class="para">Create your click and collect account.Already member?<a href="login.php">login</a> here</p> 
+    <p class="para">Create your click and collect account.Already member?<a href="login.php">login</a> here..Go to <b>Home</b>  by<a href="index.php">This</a> Link </p> 
   </div>
   <div class="mt-5 card">
     <div class="card bg-light text-dark">

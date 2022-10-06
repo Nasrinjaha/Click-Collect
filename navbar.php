@@ -29,6 +29,9 @@
           </ul>
         </li>
 
+        
+                 
+
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,9 +63,17 @@
                       </select>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">logout</a>
-        </li>
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        SignUp
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="register.php">Signup for Customer</a>
+          <a class="dropdown-item" href="registerseller.php">SignUp for Seller</a>
+
+        </div>
+       </li>
         <li class="nav-item">
           <a class="nav-link" href="login.php">login</a>
         </li>
@@ -95,5 +106,27 @@
             });
         });
     });
+</script>
+<script>
+  var d  = document.querySelector("select[name=brand]");
+  d.addEventListener("change",function myfnc(e){
+        console.clear();
+       // console.log(e.target.value);
+       var brnd = e.target.value;
+       //document.write(brnd);
+       var url = "index.php?b_id="+brnd;
+       window.location=url;
+                                   
+  })
+  var subd  = document.querySelector("select[name=sub_category]");
+  subd.addEventListener("change",function myfnc(e){
+        console.clear();
+       // console.log(e.target.value);
+       var sub = e.target.value;
+       //document.write(brnd);
+       var url = "index.php?sub_id="+sub;
+       window.location=url;
+                                   
+  })
 </script>
 
