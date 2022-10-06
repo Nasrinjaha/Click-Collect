@@ -46,28 +46,44 @@ $cid =  $_SESSION['id'];
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8 mt-5 mb-5">
-                        <h2 class="text-center">Add Review page</h2>
+                        <h2 class="text-center">Report Pruduct Page</h2>
                         <br>
                         <form method="post" class="cmxform" action="" id="Review">
+                            <select name = "r_category" id ="r_category" class="form-control" required>
+                                <option value="">--choose category--</option>
+                                <?php 
+                                include 'include/connection.php';
+                                $query = "select * FROM report_category";
+                                $result = mysqli_query($con,$query);
+                                
+                                while($row = mysqli_fetch_array($result)){
+                                ?>
+                                    <option value="<?php echo $row['report_id'];?>"><?php echo $row['name'];?></option>
+                                
+                                <?php } ?>
+                            </select>
+
+                            <br>
                             <div class="mb-3 mt-3">
-                                    <label for="oldpass">Add your review</label>
+                                    <label for="oldpass">Add a massage</label>
                                     <br>
                                     <br>
-                                    <textarea name="review" id="review" cols="115" rows="6" required></textarea>
+                                    <textarea name="report" id="report" cols="115" rows="6" required></textarea>
                             </div> 
 
+
+
                             <div class="mb-3 mt-3 text-center">
-                                    <input type="submit" class="btn btn-primary" name = "submit" id="submitForm" value="Add" />
+                                    <input type="submit" class="btn btn-primary" name = "submit" id="submitForm" value="report" />
                             </div>
                             <?php
                                 if(isset($_POST['submit'])){
-                                    $review = $_POST['review'];
-                                    $query1 = "insert into review(p_id,review,c_id) 
-                                             values($id,'$review',$cid)";
+                                    $rid = $_POST['r_category'];
+                                    $massage = $_POST['report'];
+                                    $query1 = "insert into report_product(report_id,c_id,p_id,massage)
+                                             values($rid,$cid,$id,'$massage')";
                                         if(mysqli_query($con,$query1)){
                                             echo '<span style= "color:green;">Successfully added';
-                                            $var = 'product_single.php?id='.$id;
-                                            echo "<script>window.location.href='".$var."'</script>"; 
                                         }
                                         else{
                                         echo '<span style= "color:red;"> insertion failed!!!';

@@ -47,6 +47,10 @@
    .new{
        padding-top:8.5%;
    }
+   a {
+    color: #343a40;
+    text-decoration: underline;
+}
 
 </style>
 </head>

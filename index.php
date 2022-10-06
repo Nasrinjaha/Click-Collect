@@ -1,11 +1,8 @@
-<?php session_start(); 
- $_SESSION['isloggedin'] != 'no';
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Index Page</title>
-    <meta charset="UTF-8">
+  <title>Dash Board</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
@@ -15,6 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="customer/include/style.css" rel="stylesheet" />
   <link href="customer/include/style2.css" rel="stylesheet" />
+  <link href="customer/include/style3.css" rel="stylesheet" />
   <style>
     .pro{
         padding-left:15%;
@@ -28,9 +26,19 @@
     text-decoration-style: initial;
     text-decoration-color: initial;
   }
-  .idx{
-    width:90%;
-  }
+  .form-control{
+      border: 1px solid #171819;
+   }
+   .crt{
+     padding-left:10px;
+   }
+   .click{
+     text-align:center;
+     color:blue;
+     font-size:3rem;
+     font-family:Arial Black;
+    
+   }
 
   </style>
     
@@ -45,6 +53,7 @@
     <div class="container pro">
     <div class="col-sm-2 col-md-2 col-lg-2 ml-7"></div>
         <div class="col-sm-10 col-md-10 col-lg-10">
+            <h2 class="click">Welcome To ClickAndCollect </h2>
             <ol class="breadcrumb breadcrumb1">
                 <li><a href="#">Home</a></li>
                 <pre> || </pre>
@@ -81,7 +90,7 @@
                             else if(isset($_REQUEST['b_id'])){
                                 $bid = $_REQUEST['b_id'];
                              //echo $bid;
-                            $query = "select * FROM products where sub_id = $bid and status=1";
+                            $query = "select * FROM products where b_id = $bid and status=1";
                             }
                             else{
                                 $query = "select * FROM products where  status=1";
@@ -115,9 +124,18 @@
                                                 </span>
                                                 <span class="current-price">
                                                       <?php echo $row['price'];?>$
-                                                </span> 
-                                                <br>
-                                                <input  name="submit" type="submit" style= "text-decoration: none;" class="btn btn-secondary idx" value = "Add to cart">
+                                                </span>
+                                                <div class="mb-3 mr-3">
+                                                    <label for="pwd"> <b> Quantity:</b></label>
+                                                    <input type="number"  name="quantity" class="form-control"  />
+                                                </div>
+                                                <input value="<?php echo $row['p_id'];?>" name="pid" type="hidden">
+                                                <input value="<?php echo $row2['name'];?>" name="brand" type="hidden">
+                                                <input value="<?php echo $row['size'];?>" name="size" type="hidden">
+                                                <input value="<?php echo $row['quantity'];?>" name="qty" type="hidden">
+                                                <input value="<?php echo $row['name'];?>" name="name" type="hidden">
+                                                <input value="<?php echo $row['price'];?>" name="price" type="hidden">
+                                                <input  name="submit" type="submit" style= "text-decoration: none;" class="btn btn-secondary " value = "Add to cart">
                                                 <!-- <i class="fa fa-cart-plus"></i> -->
                                                 
                                             </a>
@@ -132,10 +150,55 @@
                              </form>
                              <?php 
                              }
-                                
                                 if(isset($_POST['submit'])){
-                                    echo "<script>window.location.href='logout.php'</script>"; 
+                                    
+                                    $name=$_POST['name'];
+                                    $qty= $_POST['qty']; 
+                                    $quantity= $_POST['quantity'];
+                                    $id = $_POST['pid'];
+                                    $price = $_POST['price'];
+                                    $brand =$_POST['brand'];
+                                    $size = $_POST['size'];
+                                    // echo $name;
+                                    // echo "<br>";
+                                    // echo $qty;
+                                    // echo "<br>";
+                                    // echo $quantity;
+                                    // echo "<br>";
+                                    // echo $id;
+                                    // echo "<br>";
+                                    if($qty<$quantity){
+                                        echo "<script>alert('Not enough quantity') </script>";
+                                    }
+                                    else if(isset($_SESSION['cart'])){
+                                        $session_array_id = array_column($_SESSION['cart'],"id");
+                                        if(!in_array($id,$session_array_id)){
+                                            $session_array = array(
+                                                'id' => $id,
+                                                "quantity" => $quantity,
+                                                "name" => $name,
+                                                "price" => $price,
+                                                "brand" => $brand,
+                                                "size" => $size
+    
+                                            );
+                                            $_SESSION['cart'][]=$session_array;
+                                        }
+                                    }
+                                    else{
+                                        $session_array = array(
+                                            'id' => $id,
+                                            "quantity" => $quantity,
+                                            "name" => $name,
+                                            "price" => $price,
+                                            "brand" => $brand,
+                                            "size" => $size
+
+                                        );
+                                        $_SESSION['cart'][]=$session_array;
+                                    }
                                 }
+                                
                              ?>
                              
                            <!-- End Latest products[single] -->  

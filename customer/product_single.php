@@ -56,6 +56,47 @@
     font-family:Arial Black;
     font-size:100%;
     }
+
+    *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 0px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
   </style>    
 </head>
 <body>
@@ -97,12 +138,27 @@
                     <p class="p">Processing Time: Item will be shipped out within 2-3 working days. </p>
                     <div class="single-rating">
                         <ul>
-                            <li class="rating"><b> 20 reviews</b></li>
-                            <li><b><a href="add_review.php?id=<?php echo $id;?>">Add your review</a></b></li>
+                            
                             <li><b>Price : <?php echo $row1['price'];?></b></li>         
                             <li><b><span class="off">10% OFF</span></b></li> 
                             <li><b>Ends on: June,5th</b></li>
                             <li><b><a href="#"> Coupon</a></b></li>
+                            <li class="rating"><b> 20 reviews</b></li>
+                            <li><b><a href="add_review.php?id=<?php echo $id;?>">Add your review</a></b></li>
+                            <li>
+                            <div class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                            </div>
+                            </li>
                         </ul> 
                     </div>
                     <div class="single-price">
@@ -110,6 +166,7 @@
                             
                         </ul>   
                     </div> 
+                    <br>
                     <div class="">
                         <p class="p"><?php echo $row1['description'];?> </p>
                     </div>
@@ -204,6 +261,14 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div> 
+                 <br>
+                 <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="product_report.php?id=<?php echo $id;?>">Report This Product</a>
+                    </div>
+
+                </div>
             </div> 
         </div>
     </div>
