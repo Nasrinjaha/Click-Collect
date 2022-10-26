@@ -6,6 +6,7 @@
 
         <li><a href="add_subcategory.php">Add Subcategory</a></li>
         <li><a href="add_brand.php">Add Brand</a></li>
+        <li><a href="add_report_category.php">Add Report Category</a></li>
 
         <li><a href="customers.php">All Customers</a></li>
         <li><a href="sellers.php">All Sellers</a></li>
@@ -18,6 +19,8 @@
         
         <li><a href="product_request.php">Products Request</a></li>
         <li><a href="seller_request.php">sellers Request</a></li>
+
+        <li><a href="report_product.php">Report Products</a></li>
 
         <li><a href="products.php">Customer View</a></li>
         <li><a href="account_newsletter.php">Account Newsletter and Other</a></li>

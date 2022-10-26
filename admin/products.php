@@ -102,7 +102,7 @@
                                                 <span class="current-price">
                                                       <?php echo $row['price'];?>
                                                 </span>
-                                                <a  style= "text-decoration: none;" href="cart.php"  class="btn btn-secondary text-center add-to-cart pull-right">
+                                                <a  style= "text-decoration: none;" href="#"  class="btn btn-secondary text-center add-to-cart pull-right">
                                                 <!-- <i class="fa fa-cart-plus"></i> -->
                                                 Add to cart
                                             </a>
