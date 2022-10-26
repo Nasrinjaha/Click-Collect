@@ -114,20 +114,26 @@ if(isset($_POST['stripeToken'])){
                                     if(isset($_SESSION['cart'])){
 										foreach($_SESSION['cart'] as $key=>$value){ 
 											$pid=$value['id']; 
-											$quantity=$value['quantity']; 
-											// echo $last_o_id;
-											// echo '<br>';
-											// echo $pid;
-											// echo '<br>';
-											// echo $quantity;
-											// echo '<br>';
-											$sql1 = "insert into order_line(o_id,p_id,quantity) values($last_o_id,$pid,$quantity)";
-											$result1 = mysqli_query($con,$sql1);
-											if($result1){
-												//$fg = 1;
-											}
-											else{
-												//echo "error".mysqli_error($con);
+											$sql2 = "select * from products where p_id = $pid";
+											$result2 = mysqli_query($con,$sql2);
+											$row2 = mysqli_fetch_array($result2);
+											$stored = $row2['quantity'];
+											
+											//echo $stored;
+											//echo "<script>alert('Not enough quantity') </script>";
+											$quantity=$value['quantity'];
+											if($stored>$quantity) { 
+												$stored = $stored-$quantity;
+												$sql10 = "update products set quantity = $stored where p_id = $pid";
+												$result10 = mysqli_query($con,$sql10);
+												$sql1 = "insert into order_line(o_id,p_id,quantity) values($last_o_id,$pid,$quantity)";
+												$result1 = mysqli_query($con,$sql1);
+												if($result1){
+													//$fg = 1;
+												}
+												else{
+													//echo "error".mysqli_error($con);
+											    }
 											}            
 										}
 									} 

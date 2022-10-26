@@ -57,7 +57,7 @@
             <ol class="breadcrumb breadcrumb1">
                 <li><a href="#">Home</a></li>
                 <pre> || </pre>
-                <div class= "crt"><li><a href="logout.php">My Cart</a></li></div>
+                <div class= "crt"><li><a href="login.php">My Cart</a></li></div>
             </ol>
             <div class="product-top">
                 <h4>All Products</h4>
@@ -125,17 +125,17 @@
                                                 <span class="current-price">
                                                       <?php echo $row['price'];?>$
                                                 </span>
-                                                <div class="mb-3 mr-3">
+                                                <!-- <div class="mb-3 mr-3">
                                                     <label for="pwd"> <b> Quantity:</b></label>
                                                     <input type="number"  name="quantity" class="form-control"  />
-                                                </div>
+                                                </div> -->
                                                 <input value="<?php echo $row['p_id'];?>" name="pid" type="hidden">
                                                 <input value="<?php echo $row2['name'];?>" name="brand" type="hidden">
                                                 <input value="<?php echo $row['size'];?>" name="size" type="hidden">
                                                 <input value="<?php echo $row['quantity'];?>" name="qty" type="hidden">
                                                 <input value="<?php echo $row['name'];?>" name="name" type="hidden">
                                                 <input value="<?php echo $row['price'];?>" name="price" type="hidden">
-                                                <input  name="submit" type="submit" style= "text-decoration: none;" class="btn btn-secondary " value = "Add to cart">
+                                                <a href="login.php" style= "text-decoration: none;"  class="btn btn-secondary text-center add-to-cart pull-right">Add to cart</a>
                                                 <!-- <i class="fa fa-cart-plus"></i> -->
                                                 
                                             </a>
@@ -150,55 +150,6 @@
                              </form>
                              <?php 
                              }
-                                if(isset($_POST['submit'])){
-                                    
-                                    $name=$_POST['name'];
-                                    $qty= $_POST['qty']; 
-                                    $quantity= $_POST['quantity'];
-                                    $id = $_POST['pid'];
-                                    $price = $_POST['price'];
-                                    $brand =$_POST['brand'];
-                                    $size = $_POST['size'];
-                                    // echo $name;
-                                    // echo "<br>";
-                                    // echo $qty;
-                                    // echo "<br>";
-                                    // echo $quantity;
-                                    // echo "<br>";
-                                    // echo $id;
-                                    // echo "<br>";
-                                    if($qty<$quantity){
-                                        echo "<script>alert('Not enough quantity') </script>";
-                                    }
-                                    else if(isset($_SESSION['cart'])){
-                                        $session_array_id = array_column($_SESSION['cart'],"id");
-                                        if(!in_array($id,$session_array_id)){
-                                            $session_array = array(
-                                                'id' => $id,
-                                                "quantity" => $quantity,
-                                                "name" => $name,
-                                                "price" => $price,
-                                                "brand" => $brand,
-                                                "size" => $size
-    
-                                            );
-                                            $_SESSION['cart'][]=$session_array;
-                                        }
-                                    }
-                                    else{
-                                        $session_array = array(
-                                            'id' => $id,
-                                            "quantity" => $quantity,
-                                            "name" => $name,
-                                            "price" => $price,
-                                            "brand" => $brand,
-                                            "size" => $size
-
-                                        );
-                                        $_SESSION['cart'][]=$session_array;
-                                    }
-                                }
-                                
                              ?>
                              
                            <!-- End Latest products[single] -->  
