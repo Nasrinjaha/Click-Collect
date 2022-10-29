@@ -21,7 +21,7 @@
             padding-right :5%;
             } 
             .bot{
-                padding-top:8%;
+                padding-top:0%;
             }
             .add{
                 padding-left:2.5%;

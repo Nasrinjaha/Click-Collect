@@ -137,11 +137,12 @@
                 </div>
                 <div class="col-md-6 single-top-right">
                     <h3 class="item_name"><?php echo $row1['name'];?></h3>
-                    <p class="p">Processing Time: Item will be shipped out within 2-3 working days. </p>
+                    <p class="p">Processing Time: Item will be shipped out within 2-3 working days.</p>
                     <div class="single-rating">
                         <ul>
                             
-                            <li><b>Price : <?php echo $row1['price'];?></b></li>         
+                            <li><b>Price : <?php echo $row1['price'];?></b></li> 
+                            <li><b>Sid : <?php echo $row1['s_id'];?></b></li>        
                             <li><b><span class="off">10% OFF</span></b></li> 
                             <li><b>Ends on: June,5th</b></li>
                             <li><b><a href="#"> Coupon</a></b></li>
@@ -182,7 +183,7 @@
                                 <a style= "text-decoration: none; color:white;" href="block_products.php" class="btn btn-danger  but">delete this product</a>
                             </div>
                             <div class="col-md-4 but1">
-                                <a  style= "text-decoration: none; color:white;" href="product_massage.php" class="btn btn-primary but">massage to the seller</a>
+                                <a  style= "text-decoration: none; color:white;" href="massagetoseller.php?id=<?php  echo $row1['s_id'];?>&pid=<?php  echo $row1['p_id'];?>" class="btn btn-primary but">massage to the seller</a>
                             </div>
                            
                         </div>

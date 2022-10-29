@@ -61,6 +61,9 @@
           </ul>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="a.php">massage</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="../logout.php">logout</a>
         </li>
       </ul>
