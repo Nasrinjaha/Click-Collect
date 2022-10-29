@@ -54,7 +54,7 @@
                 <div class="row">
                     <!-- <div class="col-md-2"></div> -->
                     <div class="col-md-12 mt-0 mb-5 ml-1">
-                        <h2 class="text-center">My Shopping Cart</h2>
+                        <h2 class="text-center">My All Orders</h2>
                         <br>
                         <table class="table table-striped" id = "cartproducts1">
                         <thead>
