@@ -49,19 +49,17 @@
               </select>
           </ul>
         </li>
-
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Shop By Sub-category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                   <select name = "sub_category" id ="sub_category" class="form-control" required> 
-                      </select>
+                  </select>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="a.php">massage</a>
+          <a class="nav-link" href="warningmsg.php">massage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../logout.php">logout</a>
