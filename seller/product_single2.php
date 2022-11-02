@@ -1,19 +1,18 @@
 <?php 
-    include 'connection.php';
+    include 'include/sellerauth.php';
+    include 'include/connection.php';
     $id = $_REQUEST['id'];
- 
-    // $id = 30;
     $query1 = "select * from products where p_id = $id ";
     $table1=mysqli_query($con,$query1);
     $row1 = mysqli_fetch_array($table1);
-                
-   
+                                                    
+                               
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Single Products view</title>
+  <title>Seller Access</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
@@ -23,9 +22,9 @@
   <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="customer/include/style.css" rel="stylesheet" />
-  <link href="customer/include/style2.css" rel="stylesheet" />
-  <link href="customer/include/style3.css" rel="stylesheet" />
+  <link href="include/style.css" rel="stylesheet" />
+  <link href="include/style2.css" rel="stylesheet" />
+  <link href="include/style3.css" rel="stylesheet" />
 
   <style>
     
@@ -35,11 +34,15 @@
     }
     .but1{
         padding-left:10%;
+        
+    }
+    a{
+        color: white;
     }
     .p{
-        font-family:Arial Black;
-        font-weight: 900;
-        font-size:1.1rem;
+        font-family: Arial Black;
+        font-weight:300;
+        font-size:1.2rem;
     }
     .item_name{
         font-weight: 1000;
@@ -55,19 +58,22 @@
     .share{
         padding-top:5%;
     }
-    
+    .pname{
+    font-family:Arial Black;
+    font-size:100%;
+    }
   </style>    
 </head>
 <body>
 <div class="b">
-     <?php include 'navbar.php'; ?>
+     <?php include 'include/navbar.php' ?>
 </div>
 <div class="content-area prodcuts">
     <div class="container">
         <ol class="breadcrumb breadcrumb1">
-            <li><a href="index.php">Home ||</a></li>
+            <li><a href="account.php"><pre class="pname"> Home ||</pre></a></li>
+            <li><a href="products.php"> <pre class="pname">  Products ||</pre> </a></li>
             <li class="active"><pre class="pname">  <?php echo $row1['name'];?></pre> </li>
-            
         </ol>
         <div class="single-product">
             <div class="row" id="">
@@ -77,7 +83,7 @@
                             <div class="row">
                               
                                 <div class="col-md-9">
-                                       
+                                        
                                         <img src=""  height ="350" width = "400" alt="">
                                 </div>
                                 
@@ -115,27 +121,18 @@
                         <p class="p"><?php echo $row1['description'];?> </p>
                     </div>
                     <form action="#" method="post">
-                        <input type="hidden" name="cmd" value="_cart" />
-                        <input type="hidden" name="add" value="1" /> 
-                        <input type="hidden" name="w3ls_item" value="Snow Blower" /> 
-                        <input type="hidden" name="amount" value="540.00" /> 
                         <div class="row">
                             <div class="col-md-4 but1">
                                 <!-- <a href="logout.php" class="btn btn-success  but">Add to cart</a> -->
-                                <button type="submit" name ="cart" class="btn btn-success  but" > Add to cart</button>
+                                <button type="submit" name ="cart" class="btn btn-success  but" > Edit Product</button>
                             </div>
-                            <div class="col-md-5">
-                                  <button type="submit" name ="wish" class="btn btn-primary  but"></i> Add to Wishlist</button>
-                            </div>
-                           
                         </div>
                     </form>
                     <?php
                        if(isset($_POST['cart'])){
-                           echo "<script>window.location.href='login.php'</script>";
-                       }
-                       else if(isset($_POST['wish'])){
-                        echo "<script>window.location.href='login.php'</script>";
+                            $pid = $row1['p_id'];
+                            $var = 'update_product.php?id='.$pid;
+                            echo "<script>window.location.href='".$var."'</script>";
                        }
                     ?>
                     
@@ -216,7 +213,7 @@
 </div>
 </div> 
 <div class="bot">
-    <?php include 'customer/include/footer.php' ?>
+    <?php include 'include/footer.php' ?>
 </div>
 <?php 
       $js = "<script> var photo = [];"; 
@@ -233,27 +230,28 @@
 <script>
     var imgtag = document.querySelector("img");
     var img = 0;
-    imgtag.src='images/'+photo[img];
+    imgtag.src='../images/'+photo[img];
     var l = photo.length;
     function previousimage(){
         img--;
         if(img==-1){
             img = l-1;
         }
-        imgtag.src='images/'+photo[img];
+        imgtag.src='../images/'+photo[img];
     }
     function nextimage(){
         img = img+1;
         if(img==l){
             img = 0;
-        
         }
-        imgtag.src='images/'+photo[img];
+        imgtag.src='../images/'+photo[img];
     }
 </script>
 
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/webslidemenu.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -49,17 +49,13 @@
                     <div class="col-md-12 mt-0 mb-5 ml-1">
                         <h2 class="text-center">All  Products List</h2>
                         <br>
-                        <table class="table table-striped" id = "allproducts">
+                        <table class="table table-striped" id = "msgproducts">
                         <thead>
                         <tr>
                             <th></th>
                             <th>ID</th>
                             <th>Produscts Name</th>
-                            <th>Brand</th>
-                            <th>Sub_Category</th>
-                            <th>Size</th>
-                            <th>Price</th>
-                            <th>Qunatiy</th>
+                            <th>Massage</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -67,31 +63,21 @@
                         <?php
                             //include 'inlude/navbar.php';
                             include 'include/connection.php';
-                            $query = "select * from products where status='1' and s_id=$sellerid";
+                            $query = "select * from warningmassage where s_id= $sellerid";
                             $table = mysqli_query($con,$query);
                             while($row = mysqli_fetch_array($table)){                   
                         ?>
                         <tr>
                         <td></td>
-                                <td><?php echo $row['p_id'];?></td>
-                                <td><a href="product_single2.php?id=<?php echo $row['p_id'];?>"><?php echo $row['name']; ?></a></td>
+                                <td><?php echo $row['w_id'];?></td>
                                 <?php 
-                                    $id =  $row['b_id'];
-                                    $query1 = "select * from brand where b_id= $id";
-                                    $table1 = mysqli_query($con,$query1);
-                                    $row1 = mysqli_fetch_array($table1)
+                                   $id = $row['p_id'];
+                                   $query2 = "select * from products where p_id= $id";
+                                   $table2 = mysqli_query($con,$query2);
+                                   $row2 = mysqli_fetch_array($table2);
                                 ?>
-                                <td><?php echo $row1['name'];?></td>
-                                <?php 
-                                    $id =  $row['sub_id'];
-                                    $query3 = "select * from sub_category where sub_id= $id";
-                                    $table3 = mysqli_query($con,$query3);
-                                    $row3 = mysqli_fetch_array($table3);
-                                ?>
-                                <td><?php echo $row3['name'];?></td>
-                                <td><?php echo $row['size'];?></td>
-                                <td><?php echo $row['price'];?></td>
-                                <td><?php echo $row['quantity'];?></td>
+                                <td><a href="product_single2.php?id=<?php echo $row['p_id'];?>"><?php echo $row2['name']; ?></a></td>
+                                <td><?php echo $row['massage'];?></td>
                                 <td>                                
                                     <a class = "btn btn-primary" href ="update_product.php?id=<?php  echo $row['p_id']?>">Edit</a>
                                     <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['p_id'];?>">Delete</a>
@@ -107,12 +93,12 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                       Do you want to Delete <b><?php echo $row['name'];?></b>?
+                                       Do you want to Delete <b><?php echo $row2['name'];?></b>?
                                     </div>
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <a class = "btn btn-primary" href ="block_product.php?id=<?php  echo $row['p_id']?>">yes</a>
+                                        <a class = "btn btn-primary" href ="block_product.php?pid=<?php  echo $row['p_id']?>">yes</a>
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                                     </div>
 
@@ -139,9 +125,9 @@
 <script src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
         $(document).ready(function(){
-            $("#allproducts").DataTable({
+            $("#msgproducts").DataTable({
                 'columnDefs': [ {
-                    'targets': [0,8], 
+                    'targets': [3], 
                     'orderable': false, 
                 }]
             });
