@@ -2,6 +2,7 @@
     include 'include/customerauth.php';
     include 'include/connection.php';
     $id = $_REQUEST['id'];
+    $cid = $_SESSION['id'];
     $query1 = "select * from products where p_id = $id ";
     $table1=mysqli_query($con,$query1);
     $row1 = mysqli_fetch_array($table1);
@@ -13,11 +14,9 @@
   <title>Customer Access</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="include/style.css" rel="stylesheet" />
@@ -96,6 +95,10 @@
     .rate > label:hover ~ input:checked ~ label {
         color: #c59b08;
     }
+    .checked {
+        color: orange;
+    }
+
 
   </style>    
 </head>
@@ -146,23 +149,24 @@
                             <li class="rating"><b> 20 reviews</b></li>
                             <li><b><a href="add_review.php?id=<?php echo $id;?>">Add your review</a></b></li>
                             <?php 
-                                    $query2 = "select * from startreview where p_id = $id ";
+                                    $query2 = "SELECT AVG(star) as Star FROM starreview WHERE p_id = $id ";
                                     $table2=mysqli_query($con,$query2);
                                     $row2 = mysqli_fetch_array($table2);
-                                    $rate = $row2['star'];
-                                    $rate = $rate/5;
+                                    $rate = $row2['Star'];
                             ?>
                             <div class="row">
-                                <div class="col sm-3">
-                                   <b>  rate : <?php echo $rate ;?><i style="font-size:24px" class="fa">&#xf123;</i>
+                                <div class="col sm-2 pr-2">
+                                   <b>  rate : <?php echo sprintf("%.2f", $rate) ;?><span class="fa fa-star checked pl-2"></span>
                                 </div>
-                                <div class="col sm-3">
+                                <div class="col sm-2">
                                     add yours : </b>
                                 </div>
                             </div>
                                
-                            <li>   
+                            <li>  
+                            <form action="" method="post"> 
                             <div class="rate">
+                                
                                     <input type="radio" onchange="star(5)" id="star5" name="rate" value="5" />
                                     <label for="star5" title="text">5 stars</label>
                                     <input type="radio" onchange="star(4)" id="star4" name="rate" value="4" />
@@ -173,7 +177,31 @@
                                     <label for="star2" title="text">2 stars</label>
                                     <input type="radio" onchange="star(1)" id="star1" name="rate" value="1" />
                                     <label for="star1" title="text">1 star</label>
+                                    
+                                        
                             </div>
+
+                            <input type="submit" class="btn btn-primary" name="star" value="submit"> 
+                            </form>
+                            <?php 
+                                if(isset($_POST['star'])){
+                                    if(isset($_POST['rate'])){
+                                        $rate = $_POST['rate'];
+                                        $query3 = "select * from starreview where c_id = $cid and p_id=$id";
+                                        $table3 = mysqli_query($con,$query3);
+                                        $row3 = mysqli_fetch_array($table3);
+                                        if($row3){
+                                            $query4 = "update starreview set star = $rate where c_id = $cid and p_id=$id";
+                                            $table4 = mysqli_query($con,$query4);
+                                        }
+                                        else{
+                                            $query4 = "INSERT INTO `starreview` (`p_id`, `c_id`, `star`) VALUES ('$id', '$cid', '$rate');";
+                                            $table4 = mysqli_query($con,$query4);
+                                        }
+                                      
+                                    }     
+                                }
+                             ?>
                             </li>
                         </ul> 
                     </div>
@@ -328,21 +356,6 @@
         }
         imgtag.src='../images/'+photo[img];
     }
-</script>
-<script>
-
-// var strat1 = document.getElementbyId("#star1");
-// var strat2 = document.getElementbyId("#star2");
-// var strat3 = document.getElementbyId("#star3");
-// var strat4 = document.getElementbyId("#star4");
-// var strat5 = document.getElementbyId("#star5");
-
-function star(s) {
-    if(s==1){
-        alert(s);
-    }
-}
-
 </script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/webslidemenu.js"></script>
