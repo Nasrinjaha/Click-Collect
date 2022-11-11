@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../account.php">Home</a>
+    <a class="navbar-brand" href="account.php">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -93,4 +93,25 @@
         });
     });
 </script>
-
+<script>
+  var d  = document.querySelector("select[name=brand]");
+  d.addEventListener("change",function myfnc(e){
+        console.clear();
+       // console.log(e.target.value);
+       var brnd = e.target.value;
+       //document.write(brnd);
+       var url = "products.php?b_id="+brnd;
+       window.location=url;
+                                   
+  })
+  var subd  = document.querySelector("select[name=sub_category]");
+  subd.addEventListener("change",function myfnc(e){
+        console.clear();
+       // console.log(e.target.value);
+       var sub = e.target.value;
+       //document.write(brnd);
+       var url = "products.php?sub_id="+sub;
+       window.location=url;
+                                   
+  })
+</script>
