@@ -31,7 +31,7 @@
    padding-right :5%;
    } 
    .bot{
-    padding-top:0%;
+    padding-top:20%;
    }
    .up{
     padding-left:260px;

@@ -26,7 +26,10 @@
     text-decoration-thickness: initial;
     text-decoration-style: initial;
     text-decoration-color: initial;
-  }
+    }
+    .bot{
+        padding-top : 8%;
+    }
 
   </style>
     
@@ -70,12 +73,10 @@
                              include 'include/connection.php';
                              if(isset($_REQUEST['sub_id'])){
                                 $sid = $_REQUEST['sub_id'];
-                             echo $sid;
                             $query = "select * FROM products where sub_id = $sid and status=1";
                             }
                             else if(isset($_REQUEST['b_id'])){
                                 $bid = $_REQUEST['b_id'];
-                             echo $bid;
                             $query = "select * FROM products where sub_id = $bid and status=1";
                             }
                             else{
@@ -131,8 +132,9 @@
 
 </div>
 </div> <!-- End content Area class -->
-
-<?php include 'include/footer.php' ?>
+<div class="bot">
+    <?php include 'include/footer.php' ?>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>

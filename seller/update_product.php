@@ -1,6 +1,11 @@
 <?php include 'include/sellerauth.php';
 include 'include/connection.php';
-$id = $_REQUEST['id'];
+if(isset($_REQUEST['id'])){
+    $id = $_REQUEST['id'];
+}
+else if(isset($_REQUEST['mid'])){
+    $id=  $_REQUEST['mid'];
+}
 $sellerid = $_SESSION['id'];
 $query ="select * from products where p_id=$id"; 
 $table=mysqli_query($con,$query);
@@ -177,7 +182,15 @@ $size = $row['size'];
                                 <input type="submit" name = "submit" class="btn btn-primary" id="submitForm" value="update" />
                                 </div>
                                 <div class = "col-sm-6">
-                                <a class="btn btn-danger" href = "allproducts.php">back</a> 
+                                <?php 
+                                   if(isset($_REQUEST['id'])){?>
+                                     <a class="btn btn-danger" href = "allproducts.php">back</a> 
+                                  <?php }
+                                  else if (isset($_REQUEST['mid'])){?>
+                                     <a class="btn btn-danger" href = "warningmsg.php">back</a> 
+                                 <?php }
+                                ?>
+                                
                         </div>
                  
 

@@ -145,8 +145,16 @@
                             <li><b>Price : <?php echo $row1['price'];?></b></li>         
                             <li><b><span class="off">10% OFF</span></b></li> 
                             <li><b>Ends on: June,5th</b></li>
+                            <?php 
+                             $i =0;
+                              $sql5 = "select * from review where p_id = $id";
+                              $result5 = mysqli_query($con,$sql5);
+                              while($row5=mysqli_fetch_array($result5)){
+                                 $i++;
+                              }
+                            ?>
                             <li><b><a href="#"> Coupon</a></b></li>
-                            <li class="rating"><b> 20 reviews</b></li>
+                            <li class="rating"><b> <?php echo $i; ?> reviews</b></li>
                             <li><b><a href="add_review.php?id=<?php echo $id;?>">Add your review</a></b></li>
                             <?php 
                                     $query2 = "SELECT AVG(star) as Star FROM starreview WHERE p_id = $id ";

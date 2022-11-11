@@ -137,7 +137,7 @@
                                 <input type="submit" name = "submit" class="btn btn-success" id="submitForm" value="add" />
                                 </div>
                                 <div class = "col-sm-6">
-                                <a class="btn btn-danger" href = "allproducts.php">back</a> 
+                                <a class="btn btn-danger" href = "account.php">back</a> 
                         </div>
                  
 

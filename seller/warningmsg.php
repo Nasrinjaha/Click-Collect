@@ -47,7 +47,7 @@
                 <div class="row">
                     <!-- <div class="col-md-2"></div> -->
                     <div class="col-md-12 mt-0 mb-5 ml-1">
-                        <h2 class="text-center">All  Products List</h2>
+                        <h2 class="text-center"> Massage Products List</h2>
                         <br>
                         <table class="table table-striped" id = "msgproducts">
                         <thead>
@@ -79,7 +79,7 @@
                                 <td><a href="product_single2.php?id=<?php echo $row['p_id'];?>"><?php echo $row2['name']; ?></a></td>
                                 <td><?php echo $row['massage'];?></td>
                                 <td>                                
-                                    <a class = "btn btn-primary" href ="update_product.php?id=<?php  echo $row['p_id']?>">Edit</a>
+                                    <a class = "btn btn-primary" href ="update_product.php?mid=<?php  echo $row['p_id']?>">Edit</a>
                                     <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['p_id'];?>">Delete</a>
                                 <div class="modal" id="myModal<?php echo $row['p_id'];?>">
                                 <div class="modal-dialog">
