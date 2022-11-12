@@ -178,6 +178,16 @@
                                             );
                                             $_SESSION['cart'][]=$session_array;
                                         }
+                                        else{
+                                            for($i=0;$i<count($_SESSION['cart']);$i++){
+                                                if($_SESSION['cart'][$i]['id']==$id){
+                                                    $_SESSION['cart'][$i]['quantity'] += $quantity;
+                                                    break;
+                                                }
+                                                
+                                            }
+                                        }
+                                        
                                     }
                                     else{
                                         $session_array = array(
